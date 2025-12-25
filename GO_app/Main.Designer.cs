@@ -30,11 +30,15 @@
         {
             lbl_passage01A = new Label();
             btn_passage01A = new Button();
+            lbl_progetto = new Label();
+            cmb_progetto = new ComboBox();
+            linea01 = new Panel();
+            btn_aggiungiProgetto = new Button();
             SuspendLayout();
             // 
             // lbl_passage01A
             // 
-            lbl_passage01A.Location = new Point(10, 10);
+            lbl_passage01A.Location = new Point(10, 80);
             lbl_passage01A.Name = "lbl_passage01A";
             lbl_passage01A.Size = new Size(50, 30);
             lbl_passage01A.TabIndex = 0;
@@ -43,23 +47,62 @@
             // 
             // btn_passage01A
             // 
-            btn_passage01A.Location = new Point(70, 10);
+            btn_passage01A.Location = new Point(70, 80);
             btn_passage01A.Name = "btn_passage01A";
             btn_passage01A.Size = new Size(200, 30);
             btn_passage01A.TabIndex = 1;
             btn_passage01A.Text = "Indirizzi";
             btn_passage01A.UseVisualStyleBackColor = true;
             // 
+            // lbl_progetto
+            // 
+            lbl_progetto.Location = new Point(8, 9);
+            lbl_progetto.Name = "lbl_progetto";
+            lbl_progetto.Size = new Size(70, 30);
+            lbl_progetto.TabIndex = 2;
+            lbl_progetto.Text = "Progetto";
+            lbl_progetto.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // cmb_progetto
+            // 
+            cmb_progetto.FormattingEnabled = true;
+            cmb_progetto.Location = new Point(90, 10);
+            cmb_progetto.Name = "cmb_progetto";
+            cmb_progetto.Size = new Size(180, 28);
+            cmb_progetto.TabIndex = 3;
+            // 
+            // linea01
+            // 
+            linea01.BackColor = SystemColors.GrayText;
+            linea01.Location = new Point(0, 50);
+            linea01.Name = "linea01";
+            linea01.Size = new Size(330, 1);
+            linea01.TabIndex = 4;
+            // 
+            // btn_aggiungiProgetto
+            // 
+            btn_aggiungiProgetto.Location = new Point(280, 10);
+            btn_aggiungiProgetto.Name = "btn_aggiungiProgetto";
+            btn_aggiungiProgetto.Size = new Size(30, 30);
+            btn_aggiungiProgetto.TabIndex = 5;
+            btn_aggiungiProgetto.Text = "+";
+            btn_aggiungiProgetto.UseVisualStyleBackColor = true;
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(282, 153);
+            ClientSize = new Size(322, 153);
+            Controls.Add(btn_aggiungiProgetto);
+            Controls.Add(linea01);
+            Controls.Add(cmb_progetto);
+            Controls.Add(lbl_progetto);
             Controls.Add(btn_passage01A);
             Controls.Add(lbl_passage01A);
             Name = "Main";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Gestione orario";
+            Load += Main_Load;
             ResumeLayout(false);
         }
 
@@ -67,5 +110,9 @@
 
         private Label lbl_passage01A;
         private Button btn_passage01A;
+        private Label lbl_progetto;
+        private ComboBox cmb_progetto;
+        private Panel linea01;
+        private Button btn_aggiungiProgetto;
     }
 }
