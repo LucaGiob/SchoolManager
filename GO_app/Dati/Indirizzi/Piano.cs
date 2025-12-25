@@ -8,11 +8,11 @@ namespace GO_app.Dati.Indirizzi
 {
     internal class Piano
     {
-        public int yr1;
-        public int yr2;
-        public int yr3;
-        public int yr4;
-        public int yr5;
+        public int anno1;
+        public int anno2;
+        public int anno3;
+        public int anno4;
+        public int anno5;
 
         public Piano() { }
     }
