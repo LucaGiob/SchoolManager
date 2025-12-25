@@ -28,18 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
+            lbl_passage01A = new Label();
+            btn_passage01A = new Button();
             SuspendLayout();
+            // 
+            // lbl_passage01A
+            // 
+            lbl_passage01A.Location = new Point(10, 10);
+            lbl_passage01A.Name = "lbl_passage01A";
+            lbl_passage01A.Size = new Size(50, 30);
+            lbl_passage01A.TabIndex = 0;
+            lbl_passage01A.Text = "1A";
+            lbl_passage01A.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // btn_passage01A
+            // 
+            btn_passage01A.Location = new Point(70, 10);
+            btn_passage01A.Name = "btn_passage01A";
+            btn_passage01A.Size = new Size(200, 30);
+            btn_passage01A.TabIndex = 1;
+            btn_passage01A.Text = "Indirizzi";
+            btn_passage01A.UseVisualStyleBackColor = true;
             // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(282, 153);
+            Controls.Add(btn_passage01A);
+            Controls.Add(lbl_passage01A);
             Name = "Main";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Gestione orario";
             ResumeLayout(false);
         }
 
         #endregion
+
+        private Label lbl_passage01A;
+        private Button btn_passage01A;
     }
 }
