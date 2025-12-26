@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using GO_app.Dati;
 using GO_app.Dati.Indirizzi;
+using GO_app.Dati.Professori;
 
 namespace GO_app
 {
@@ -50,6 +51,22 @@ namespace GO_app
             using (indirizzi)
             {
                 indirizzi.ShowDialog();
+            }
+
+            Show();
+        }
+
+        private void btn_passage01B_Click(object sender, EventArgs e)
+        {
+            Progetto progetto = IO.CaricaProgetto(cmb_progetto.Text);
+
+            frm_Professori professori = new(progetto);
+
+            Hide();
+
+            using (professori)
+            {
+                professori.ShowDialog();
             }
 
             Show();

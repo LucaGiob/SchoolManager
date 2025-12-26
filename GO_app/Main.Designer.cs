@@ -34,6 +34,8 @@
             cmb_progetto = new ComboBox();
             linea01 = new Panel();
             btn_aggiungiProgetto = new Button();
+            lbl_passage01B = new Label();
+            btn_passage01B = new Button();
             SuspendLayout();
             // 
             // lbl_passage01A
@@ -90,11 +92,32 @@
             btn_aggiungiProgetto.UseVisualStyleBackColor = true;
             btn_aggiungiProgetto.Click += Btn_aggiungiProgetto_Click;
             // 
+            // lbl_passage01B
+            // 
+            lbl_passage01B.Location = new Point(10, 100);
+            lbl_passage01B.Name = "lbl_passage01B";
+            lbl_passage01B.Size = new Size(50, 30);
+            lbl_passage01B.TabIndex = 6;
+            lbl_passage01B.Text = "1B";
+            lbl_passage01B.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // btn_passage01B
+            // 
+            btn_passage01B.Location = new Point(70, 100);
+            btn_passage01B.Name = "btn_passage01B";
+            btn_passage01B.Size = new Size(240, 30);
+            btn_passage01B.TabIndex = 7;
+            btn_passage01B.Text = "Professori";
+            btn_passage01B.UseVisualStyleBackColor = true;
+            btn_passage01B.Click += btn_passage01B_Click;
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(322, 153);
+            Controls.Add(btn_passage01B);
+            Controls.Add(lbl_passage01B);
             Controls.Add(btn_aggiungiProgetto);
             Controls.Add(linea01);
             Controls.Add(cmb_progetto);
@@ -116,5 +139,7 @@
         private ComboBox cmb_progetto;
         private Panel linea01;
         private Button btn_aggiungiProgetto;
+        private Label lbl_passage01B;
+        private Button btn_passage01B;
     }
 }
