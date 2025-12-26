@@ -38,7 +38,7 @@
             // 
             // lbl_passage01A
             // 
-            lbl_passage01A.Location = new Point(10, 80);
+            lbl_passage01A.Location = new Point(10, 60);
             lbl_passage01A.Name = "lbl_passage01A";
             lbl_passage01A.Size = new Size(50, 30);
             lbl_passage01A.TabIndex = 0;
@@ -47,9 +47,9 @@
             // 
             // btn_passage01A
             // 
-            btn_passage01A.Location = new Point(70, 80);
+            btn_passage01A.Location = new Point(70, 60);
             btn_passage01A.Name = "btn_passage01A";
-            btn_passage01A.Size = new Size(200, 30);
+            btn_passage01A.Size = new Size(240, 30);
             btn_passage01A.TabIndex = 1;
             btn_passage01A.Text = "Indirizzi";
             btn_passage01A.UseVisualStyleBackColor = true;
@@ -87,6 +87,7 @@
             btn_aggiungiProgetto.TabIndex = 5;
             btn_aggiungiProgetto.Text = "+";
             btn_aggiungiProgetto.UseVisualStyleBackColor = true;
+            btn_aggiungiProgetto.Click += btn_aggiungiProgetto_Click;
             // 
             // Main
             // 

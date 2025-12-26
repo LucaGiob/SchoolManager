@@ -21,5 +21,20 @@ namespace GO_app.Dati
 
             return list;
         }
+
+        public static void CreaProgetto(string nome)
+        {
+            Progetto progetto = new()
+            {
+                nome = nome
+            };
+
+            string content = progetto.ToString();
+
+            string folder = AppContext.BaseDirectory;
+            string path = Path.Combine(folder, $"{nome}.gop");
+
+            File.WriteAllText(path, content);
+        }
     }
 }

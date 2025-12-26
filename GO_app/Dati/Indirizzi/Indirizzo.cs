@@ -15,6 +15,7 @@ namespace GO_app.Dati.Indirizzi
 
         public Indirizzo()
         {
+            id = '0';
             nome = string.Empty;
             piani = [];
         }

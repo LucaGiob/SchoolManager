@@ -18,5 +18,18 @@ namespace GO_app.Dati
             nome = string.Empty;
             indirizzi = [];
         }
+
+        public override string ToString()
+        {
+            var result = new StringBuilder();
+
+            result.Append('{');
+
+            result.Append("nome: ").Append(nome).Append(';');
+
+            result.Append('}');
+
+            return result.ToString();
+        }
     }
 }
