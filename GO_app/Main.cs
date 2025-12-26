@@ -41,6 +41,15 @@ namespace GO_app
             Progetto progetto = IO.CaricaProgetto(cmb_progetto.Text);
 
             frm_Indirizzi indirizzi = new(progetto);
+
+            Hide();
+
+            using (indirizzi)
+            {
+                indirizzi.ShowDialog();
+            }
+
+            Show();
         }
     }
 }
