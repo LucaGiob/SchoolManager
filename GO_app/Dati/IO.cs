@@ -36,5 +36,18 @@ namespace GO_app.Dati
 
             File.WriteAllText(path, content);
         }
+
+        public static Progetto CaricaProgetto(string nome)
+        {
+            string folder = AppContext.BaseDirectory;
+            string path = Path.Combine(folder, $"{nome}.gop");
+
+            if (!File.Exists(path))
+                throw new FileNotFoundException("File progetto non trovato.", path);
+
+            string content = File.ReadAllText(path);
+            
+            return Progetto.Parse(content);
+        }
     }
 }

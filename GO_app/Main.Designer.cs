@@ -53,6 +53,7 @@
             btn_passage01A.TabIndex = 1;
             btn_passage01A.Text = "Indirizzi";
             btn_passage01A.UseVisualStyleBackColor = true;
+            btn_passage01A.Click += btn_passage01A_Click;
             // 
             // lbl_progetto
             // 

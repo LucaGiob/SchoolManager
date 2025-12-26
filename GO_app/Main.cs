@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using GO_app.Dati;
+using GO_app.Dati.Indirizzi;
 
 namespace GO_app
 {
@@ -33,6 +34,13 @@ namespace GO_app
             MessageBox.Show("File creato con successo!", "Operazione completata", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             Main_Load(sender, e);
+        }
+
+        private void btn_passage01A_Click(object sender, EventArgs e)
+        {
+            Progetto progetto = IO.CaricaProgetto(cmb_progetto.Text);
+
+            frm_Indirizzi indirizzi = new(progetto);
         }
     }
 }
