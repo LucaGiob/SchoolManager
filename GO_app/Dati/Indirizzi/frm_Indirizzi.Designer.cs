@@ -53,6 +53,7 @@
             btn_Elimina.TabIndex = 1;
             btn_Elimina.Text = "Elimina";
             btn_Elimina.UseVisualStyleBackColor = true;
+            btn_Elimina.Click += btn_Elimina_Click;
             // 
             // linea01
             // 
