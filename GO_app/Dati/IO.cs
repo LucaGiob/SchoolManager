@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace GO_app.Dati
@@ -21,18 +22,20 @@ namespace GO_app.Dati
             return list;
         }
 
-        public static void CreaProgetto(string nome)
+        public static JsonSerializerOptions GetOptions()
         {
-            Progetto progetto = new()
+            return new JsonSerializerOptions
             {
-                nome = nome
+                WriteIndented = true
             };
+        }
 
-            string content = progetto.ToString();
-
+        public static void SalvaProgetto(Progetto progetto)
+        {
             string folder = AppContext.BaseDirectory;
-            string path = Path.Combine(folder, $"{nome}.gop");
+            string path = Path.Combine(folder, $"{progetto.Nome}.gop");
 
+            string content = JsonSerializer.Serialize(progetto, options: GetOptions());
             File.WriteAllText(path, content);
         }
 
@@ -45,8 +48,8 @@ namespace GO_app.Dati
                 throw new FileNotFoundException("File progetto non trovato.", path);
 
             string content = File.ReadAllText(path);
-            
-            return Progetto.Parse(content);
+
+            return JsonSerializer.Deserialize<Progetto>(content)!;
         }
     }
 }

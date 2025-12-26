@@ -28,7 +28,11 @@ namespace GO_app
                 return;
             }
 
-            IO.CreaProgetto(cmb_progetto.Text);
+            Progetto progetto = new()
+            {
+                Nome = cmb_progetto.Text
+            };
+            IO.SalvaProgetto(progetto);
 
             MessageBox.Show("File creato con successo!", "Operazione completata", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

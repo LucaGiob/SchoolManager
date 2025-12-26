@@ -28,7 +28,7 @@ namespace GO_app.Dati.Indirizzi
 
             aggiunte = [];
 
-            this.Text = "Indirizzi - " + progetto.nome;
+            this.Text = "Indirizzi - " + progetto.Nome;
             actualID = '0';
             actualIndirizzo = new(progetto);
         }
@@ -46,11 +46,11 @@ namespace GO_app.Dati.Indirizzi
             btn_aggiungiPiano.Location = new Point(200, 90);
 
             //button per indirizzi
-            for (int i = 0; i < progetto.indirizzi.Count; i++)
+            for (int i = 0; i < progetto.Indirizzi.Count; i++)
             {
                 Button btn = new()
                 {
-                    Text = progetto.indirizzi[i].id + ") " + progetto.indirizzi[i].nome,
+                    Text = progetto.Indirizzi[i].Id + ") " + progetto.Indirizzi[i].Nome,
                     Size = new Size(170, 30),
                     Location = new Point(10, 60 + i * 40)
                 };
@@ -61,15 +61,15 @@ namespace GO_app.Dati.Indirizzi
 
             //dati
             lbl_ID.Text = "ID: " + actualID;
-            txb_nome.Text = actualIndirizzo.nome;
+            txb_nome.Text = actualIndirizzo.Nome;
 
             //materie
-            for (int i = 0; i < actualIndirizzo.piani.Count; i++)
+            for (int i = 0; i < actualIndirizzo.Piani.Count; i++)
             {
                 TextBox textBox = new()
                 {
                     Location = new Point(200, 80 + i * 35 + 4),
-                    Text = actualIndirizzo.piani[i].nome,
+                    Text = actualIndirizzo.Piani[i].Nome,
                     Size = new Size(240, 27),
                     Name = $"tbMateria{i}"
                 };
@@ -82,7 +82,7 @@ namespace GO_app.Dati.Indirizzi
                     TextBox textBox2 = new()
                     {
                         Location = new Point(450 + j * 50 + 5, 80 + i * 35 + 4),
-                        Text = actualIndirizzo.piani[i].anni[j].ToString(),
+                        Text = actualIndirizzo.Piani[i].Anni[j].ToString(),
                         Size = new Size(40, 27),
                         Name = $"tbOre{i}:{j}"
                     };
@@ -106,6 +106,11 @@ namespace GO_app.Dati.Indirizzi
             updating = false;
         }
 
+        private void Frm_Indirizzi_Closing(object sender, EventArgs e)
+        {
+            IO.SalvaProgetto(progetto);
+        }
+
         private void Btn_Indirizzi_Click(object? sender, EventArgs e)
         {
             if (sender is Button btn)
@@ -113,9 +118,9 @@ namespace GO_app.Dati.Indirizzi
                 char actualID = char.Parse(btn.Text.Split(')')[0]);
                 this.actualID = actualID;
 
-                foreach (Indirizzo indirizzo in progetto.indirizzi)
+                foreach (Indirizzo indirizzo in progetto.Indirizzi)
                 {
-                    if (indirizzo.id == actualID)
+                    if (indirizzo.Id == actualID)
                     {
                         actualIndirizzo = indirizzo;
                         break;
@@ -128,7 +133,7 @@ namespace GO_app.Dati.Indirizzi
 
         private void Btn_Aggiungi_Click(object sender, EventArgs e)
         {
-            progetto.indirizzi.Add(new(progetto));
+            progetto.Indirizzi.Add(new(progetto));
             Frm_Indirizzi_Load(sender, e);
         }
 
@@ -143,7 +148,7 @@ namespace GO_app.Dati.Indirizzi
 
             if (result == DialogResult.Yes)
             {
-                progetto.indirizzi.Remove(actualIndirizzo);
+                progetto.Indirizzi.Remove(actualIndirizzo);
                 actualID = '0';
             }
 
@@ -154,13 +159,13 @@ namespace GO_app.Dati.Indirizzi
         {
             if (updating) { return; }
 
-            actualIndirizzo.nome = txb_nome.Text;
+            actualIndirizzo.Nome = txb_nome.Text;
             Frm_Indirizzi_Load(sender, e);
         }
 
         private void Btn_aggiungiPiano_Click(object sender, EventArgs e)
         {
-            actualIndirizzo.piani.Add(new());
+            actualIndirizzo.Piani.Add(new());
             Frm_Indirizzi_Load(sender, e);
         }
 
@@ -171,10 +176,8 @@ namespace GO_app.Dati.Indirizzi
             if (sender is TextBox tb)
             {
                 int index = int.Parse(tb.Name.Replace("tbMateria", ""));
-                actualIndirizzo.piani[index].nome = tb.Text;
+                actualIndirizzo.Piani[index].Nome = tb.Text;
             }
-
-            Frm_Indirizzi_Load(sender, e);
         }
 
         private void Txb_Ore_Leave(object? sender, EventArgs e)
@@ -186,10 +189,8 @@ namespace GO_app.Dati.Indirizzi
                 string posizione = tb.Name.Replace("tbOre", "");
                 int i = int.Parse(posizione.Split(':')[0]);
                 int j = int.Parse(posizione.Split(':')[1]);
-                actualIndirizzo.piani[i].anni[j] = int.Parse(tb.Text);
+                actualIndirizzo.Piani[i].Anni[j] = int.Parse(tb.Text);
             }
-
-            Frm_Indirizzi_Load(sender, e);
         }
     }
 }
