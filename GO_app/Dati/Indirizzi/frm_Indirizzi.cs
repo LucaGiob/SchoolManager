@@ -45,7 +45,7 @@ namespace GO_app.Dati.Indirizzi
 
         private void btn_Aggiungi_Click(object sender, EventArgs e)
         {
-            progetto.indirizzi.Add(new());
+            progetto.indirizzi.Add(new(progetto));
 
             frm_Indirizzi_Load(sender, e);
         }
