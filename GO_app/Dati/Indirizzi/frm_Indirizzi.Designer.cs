@@ -33,6 +33,8 @@
             linea01 = new Panel();
             linea02 = new Panel();
             lbl_ID = new Label();
+            lbl_nome = new Label();
+            txb_nome = new TextBox();
             SuspendLayout();
             // 
             // btn_Aggiungi
@@ -53,7 +55,7 @@
             btn_Elimina.TabIndex = 1;
             btn_Elimina.Text = "Elimina";
             btn_Elimina.UseVisualStyleBackColor = true;
-            btn_Elimina.Click += btn_Elimina_Click;
+            btn_Elimina.Click += Btn_Elimina_Click;
             // 
             // linea01
             // 
@@ -80,11 +82,30 @@
             lbl_ID.Text = "ID:";
             lbl_ID.TextAlign = ContentAlignment.MiddleLeft;
             // 
+            // lbl_nome
+            // 
+            lbl_nome.Location = new Point(260, 10);
+            lbl_nome.Name = "lbl_nome";
+            lbl_nome.Size = new Size(60, 30);
+            lbl_nome.TabIndex = 5;
+            lbl_nome.Text = "Nome:";
+            lbl_nome.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // txb_nome
+            // 
+            txb_nome.Location = new Point(330, 10);
+            txb_nome.Name = "txb_nome";
+            txb_nome.Size = new Size(150, 27);
+            txb_nome.TabIndex = 6;
+            txb_nome.TextChanged += Txb_nome_TextChanged;
+            // 
             // frm_Indirizzi
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 453);
+            Controls.Add(txb_nome);
+            Controls.Add(lbl_nome);
             Controls.Add(lbl_ID);
             Controls.Add(linea02);
             Controls.Add(linea01);
@@ -93,6 +114,7 @@
             Name = "frm_Indirizzi";
             Load += Frm_Indirizzi_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -102,5 +124,7 @@
         private Panel linea01;
         private Panel linea02;
         private Label lbl_ID;
+        private Label lbl_nome;
+        private TextBox txb_nome;
     }
 }

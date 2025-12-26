@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace GO_app.Dati.Indirizzi
 {
-    internal class Indirizzo
+    public class Indirizzo
     {
         public char id;
         public string nome;
 
-        public List<Piano> piani;
+        internal List<Piano> piani;
 
         public Indirizzo(Progetto progetto)
         {

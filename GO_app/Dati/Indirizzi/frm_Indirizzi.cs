@@ -14,6 +14,7 @@ namespace GO_app.Dati.Indirizzi
     {
         public Progetto progetto;
         public char actualID;
+        public Indirizzo actualIndirizzo;
 
         private readonly List<Button> indirizziAggiunti;
 
@@ -26,6 +27,7 @@ namespace GO_app.Dati.Indirizzi
 
             this.Text = "Indirizzi - " + progetto.nome;
             actualID = '0';
+            actualIndirizzo = new(progetto);
         }
 
         private void Frm_Indirizzi_Load(object? sender, EventArgs e)
@@ -50,8 +52,9 @@ namespace GO_app.Dati.Indirizzi
                 indirizziAggiunti.Add(btn);
             }
 
-            //id
+            //dati
             lbl_ID.Text = "ID: " + actualID;
+            txb_nome.Text = actualIndirizzo.nome;
         }
 
         private void Btn_Indirizzi_Click(object? sender, EventArgs e)
@@ -60,6 +63,15 @@ namespace GO_app.Dati.Indirizzi
             {
                 char actualID = char.Parse(btn.Text.Split(')')[0]);
                 this.actualID = actualID;
+
+                foreach (Indirizzo indirizzo in progetto.indirizzi)
+                {
+                    if (indirizzo.id == actualID)
+                    {
+                        actualIndirizzo = indirizzo;
+                        break;
+                    }
+                }
             }
 
             Frm_Indirizzi_Load(sender, e);
@@ -72,28 +84,27 @@ namespace GO_app.Dati.Indirizzi
             Frm_Indirizzi_Load(sender, e);
         }
 
-        private void btn_Elimina_Click(object sender, EventArgs e)
+        private void Btn_Elimina_Click(object sender, EventArgs e)
         {
-            foreach (Indirizzo indirizzo in progetto.indirizzi)
-            {
-                if (indirizzo.id == actualID)
-                {
-                    var result = MessageBox.Show(
-                        "Vuoi davvero eliminare questo elemento?",
-                        "Conferma eliminazione",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Warning
-                    );
+            var result = MessageBox.Show(
+                "Vuoi davvero eliminare questo elemento?",
+                "Conferma eliminazione",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
 
-                    if (result == DialogResult.Yes)
-                    {
-                        progetto.indirizzi.Remove(indirizzo);
-                        actualID = '0';
-                        break;
-                    }
-                }
+            if (result == DialogResult.Yes)
+            {
+                progetto.indirizzi.Remove(actualIndirizzo);
+                actualID = '0';
             }
 
+            Frm_Indirizzi_Load(sender, e);
+        }
+
+        private void Txb_nome_TextChanged(object sender, EventArgs e)
+        {
+            actualIndirizzo.nome = txb_nome.Text;
             Frm_Indirizzi_Load(sender, e);
         }
     }

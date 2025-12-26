@@ -13,10 +13,9 @@ namespace GO_app
 
         private void Main_Load(object sender, EventArgs e)
         {
-            List<string> progetti = IO.ProgettiEsistenti()
+            List<string> progetti = [.. IO.ProgettiEsistenti()
                 .Where(x => x is not null)
-                .Select(x => x!)
-                .ToList();
+                .Select(x => x!)];
 
             cmb_progetto.DataSource = progetti;
         }
