@@ -42,6 +42,7 @@ namespace GO_app.Dati.Indirizzi
             {
                 this.Controls.Remove(obj);
             }
+            aggiunte.Clear();
             btn_aggiungiPiano.Location = new Point(200, 90);
 
             //button per indirizzi
@@ -69,8 +70,10 @@ namespace GO_app.Dati.Indirizzi
                 {
                     Location = new Point(200, 80 + i * 35 + 4),
                     Text = actualIndirizzo.piani[i].nome,
-                    Size = new Size(240, 27)
+                    Size = new Size(240, 27),
+                    Name = $"tbMateria{i}"
                 };
+                textBox.Leave += Txb_Materie_Leave;
                 Controls.Add(textBox);
                 aggiunte.Add(textBox);
 
@@ -80,8 +83,10 @@ namespace GO_app.Dati.Indirizzi
                     {
                         Location = new Point(450 + j * 50 + 5, 80 + i * 35 + 4),
                         Text = actualIndirizzo.piani[i].anni[j].ToString(),
-                        Size = new Size(40, 27)
+                        Size = new Size(40, 27),
+                        Name = $"tbOre{i}:{j}"
                     };
+                    textBox2.Leave += Txb_Ore_Leave;
                     Controls.Add(textBox2);
                     aggiunte.Add(textBox2);
                 }
@@ -124,7 +129,6 @@ namespace GO_app.Dati.Indirizzi
         private void Btn_Aggiungi_Click(object sender, EventArgs e)
         {
             progetto.indirizzi.Add(new(progetto));
-
             Frm_Indirizzi_Load(sender, e);
         }
 
@@ -148,7 +152,7 @@ namespace GO_app.Dati.Indirizzi
 
         private void Txb_nome_TextChanged(object sender, EventArgs e)
         {
-            if(updating) { return; }
+            if (updating) { return; }
 
             actualIndirizzo.nome = txb_nome.Text;
             Frm_Indirizzi_Load(sender, e);
@@ -157,6 +161,33 @@ namespace GO_app.Dati.Indirizzi
         private void Btn_aggiungiPiano_Click(object sender, EventArgs e)
         {
             actualIndirizzo.piani.Add(new());
+            Frm_Indirizzi_Load(sender, e);
+        }
+
+        private void Txb_Materie_Leave(object? sender, EventArgs e)
+        {
+            if (updating) { return; }
+
+            if (sender is TextBox tb)
+            {
+                int index = int.Parse(tb.Name.Replace("tbMateria", ""));
+                actualIndirizzo.piani[index].nome = tb.Text;
+            }
+
+            Frm_Indirizzi_Load(sender, e);
+        }
+
+        private void Txb_Ore_Leave(object? sender, EventArgs e)
+        {
+            if (updating) { return; }
+
+            if (sender is TextBox tb)
+            {
+                string posizione = tb.Name.Replace("tbOre", "");
+                int i = int.Parse(posizione.Split(':')[0]);
+                int j = int.Parse(posizione.Split(':')[1]);
+                actualIndirizzo.piani[i].anni[j] = int.Parse(tb.Text);
+            }
 
             Frm_Indirizzi_Load(sender, e);
         }
