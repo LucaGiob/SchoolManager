@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace GO_app.Dati
 {
-    internal class Progetto
+    public class Progetto
     {
         public string nome;
 
-        public List<Indirizzo> indirizzi;
+        internal List<Indirizzo> indirizzi;
 
         public Progetto()
         {
@@ -30,6 +30,23 @@ namespace GO_app.Dati
             result.Append('}');
 
             return result.ToString();
+        }
+
+        public static Progetto Parse(string s)
+        {
+            var result = new Progetto();
+
+            if (!string.IsNullOrEmpty(s) && s.StartsWith('{') && s.EndsWith('}'))
+            {
+                s = s[1..^1];
+            }
+            string[] parti = s.Split(';');
+
+            //nome
+            string nome = parti[0].Split(':')[1];
+            result.nome = nome;
+
+            return result;
         }
     }
 }
