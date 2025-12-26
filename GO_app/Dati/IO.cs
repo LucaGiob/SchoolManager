@@ -14,10 +14,9 @@ namespace GO_app.Dati
 
             List<string?> list = [];
 
-            list = Directory
+            list = [.. Directory
                 .EnumerateFiles(exeFolder, "*.gop")
-                .Select(Path.GetFileNameWithoutExtension)
-                .ToList();
+                .Select(Path.GetFileNameWithoutExtension)];
 
             return list;
         }

@@ -21,7 +21,7 @@ namespace GO_app
             cmb_progetto.DataSource = progetti;
         }
 
-        private void btn_aggiungiProgetto_Click(object sender, EventArgs e)
+        private void Btn_aggiungiProgetto_Click(object sender, EventArgs e)
         {
             if (cmb_progetto.Items.Cast<string>().Contains(cmb_progetto.Text))
             {
@@ -36,7 +36,7 @@ namespace GO_app
             Main_Load(sender, e);
         }
 
-        private void btn_passage01A_Click(object sender, EventArgs e)
+        private void Btn_passage01A_Click(object sender, EventArgs e)
         {
             Progetto progetto = IO.CaricaProgetto(cmb_progetto.Text);
 

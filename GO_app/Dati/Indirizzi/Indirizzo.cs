@@ -15,24 +15,25 @@ namespace GO_app.Dati.Indirizzi
 
         public Indirizzo(Progetto progetto)
         {
-            id = '0';
             nome = string.Empty;
             piani = [];
 
-            //ID già usati
+            // Prendi gli ID già usati
             HashSet<char> usedIds = [.. progetto.indirizzi.Select(i => i.id)];
 
-            //Tutte le lettere maiuscole
-            List<char> availableIds = [.. Enumerable.Range('A', 26)
-                .Select(x => (char)x)
-                .Where(c => !usedIds.Contains(c))];
+            // Genera ID progressivo: dalla A fino a Z
+            for (char c = 'A'; c <= 'Z'; c++)
+            {
+                if (!usedIds.Contains(c))
+                {
+                    id = c;
+                    break;
+                }
+            }
 
-            if (availableIds.Count == 0)
+            // Se tutte le lettere sono già usate
+            if (usedIds.Contains(id))
                 throw new InvalidOperationException("Tutte le lettere dell'alfabeto sono già state usate!");
-
-            // Genera un indice casuale
-            Random rnd = new Random();
-            id = availableIds[rnd.Next(availableIds.Count)];
         }
     }
 }

@@ -32,6 +32,7 @@
             btn_Elimina = new Button();
             linea01 = new Panel();
             linea02 = new Panel();
+            lbl_ID = new Label();
             SuspendLayout();
             // 
             // btn_Aggiungi
@@ -42,7 +43,7 @@
             btn_Aggiungi.TabIndex = 0;
             btn_Aggiungi.Text = "Aggiungi";
             btn_Aggiungi.UseVisualStyleBackColor = true;
-            btn_Aggiungi.Click += btn_Aggiungi_Click;
+            btn_Aggiungi.Click += Btn_Aggiungi_Click;
             // 
             // btn_Elimina
             // 
@@ -69,17 +70,27 @@
             linea02.Size = new Size(190, 1);
             linea02.TabIndex = 3;
             // 
+            // lbl_ID
+            // 
+            lbl_ID.Location = new Point(200, 10);
+            lbl_ID.Name = "lbl_ID";
+            lbl_ID.Size = new Size(50, 30);
+            lbl_ID.TabIndex = 4;
+            lbl_ID.Text = "ID:";
+            lbl_ID.TextAlign = ContentAlignment.MiddleLeft;
+            // 
             // frm_Indirizzi
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 453);
+            Controls.Add(lbl_ID);
             Controls.Add(linea02);
             Controls.Add(linea01);
             Controls.Add(btn_Elimina);
             Controls.Add(btn_Aggiungi);
             Name = "frm_Indirizzi";
-            Load += frm_Indirizzi_Load;
+            Load += Frm_Indirizzi_Load;
             ResumeLayout(false);
         }
 
@@ -89,5 +100,6 @@
         private Button btn_Elimina;
         private Panel linea01;
         private Panel linea02;
+        private Label lbl_ID;
     }
 }

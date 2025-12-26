@@ -53,7 +53,7 @@
             btn_passage01A.TabIndex = 1;
             btn_passage01A.Text = "Indirizzi";
             btn_passage01A.UseVisualStyleBackColor = true;
-            btn_passage01A.Click += btn_passage01A_Click;
+            btn_passage01A.Click += Btn_passage01A_Click;
             // 
             // lbl_progetto
             // 
@@ -88,7 +88,7 @@
             btn_aggiungiProgetto.TabIndex = 5;
             btn_aggiungiProgetto.Text = "+";
             btn_aggiungiProgetto.UseVisualStyleBackColor = true;
-            btn_aggiungiProgetto.Click += btn_aggiungiProgetto_Click;
+            btn_aggiungiProgetto.Click += Btn_aggiungiProgetto_Click;
             // 
             // Main
             // 
