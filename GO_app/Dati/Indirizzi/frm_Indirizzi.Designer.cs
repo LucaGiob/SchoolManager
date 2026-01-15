@@ -75,7 +75,7 @@
             linea01.BackColor = SystemColors.GrayText;
             linea01.Location = new Point(190, 0);
             linea01.Name = "linea01";
-            linea01.Size = new Size(1, 550);
+            linea01.Size = new Size(1, 650);
             linea01.TabIndex = 2;
             // 
             // linea02
@@ -117,7 +117,7 @@
             vert1.BackColor = SystemColors.GrayText;
             vert1.Location = new Point(450, 50);
             vert1.Name = "vert1";
-            vert1.Size = new Size(1, 500);
+            vert1.Size = new Size(1, 600);
             vert1.TabIndex = 7;
             // 
             // vert2
@@ -125,7 +125,7 @@
             vert2.BackColor = SystemColors.GrayText;
             vert2.Location = new Point(500, 50);
             vert2.Name = "vert2";
-            vert2.Size = new Size(1, 500);
+            vert2.Size = new Size(1, 600);
             vert2.TabIndex = 8;
             // 
             // vert3
@@ -133,7 +133,7 @@
             vert3.BackColor = SystemColors.GrayText;
             vert3.Location = new Point(550, 50);
             vert3.Name = "vert3";
-            vert3.Size = new Size(1, 500);
+            vert3.Size = new Size(1, 600);
             vert3.TabIndex = 9;
             // 
             // vert4
@@ -141,7 +141,7 @@
             vert4.BackColor = SystemColors.GrayText;
             vert4.Location = new Point(600, 50);
             vert4.Name = "vert4";
-            vert4.Size = new Size(1, 500);
+            vert4.Size = new Size(1, 600);
             vert4.TabIndex = 10;
             // 
             // vert5
@@ -149,7 +149,7 @@
             vert5.BackColor = SystemColors.GrayText;
             vert5.Location = new Point(650, 50);
             vert5.Name = "vert5";
-            vert5.Size = new Size(1, 500);
+            vert5.Size = new Size(1, 600);
             vert5.TabIndex = 11;
             // 
             // lbl_Materia
@@ -228,7 +228,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(707, 553);
+            ClientSize = new Size(707, 653);
             Controls.Add(btn_aggiungiPiano);
             Controls.Add(orizz01);
             Controls.Add(lbl_anno5);
