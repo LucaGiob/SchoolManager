@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace GO_app.Dati.Indirizzi
 {
-    public partial class frm_Indirizzi : Form
+    public partial class Frm_Indirizzi : Form
     {
         public Progetto progetto;
         public char actualID;
@@ -21,7 +21,7 @@ namespace GO_app.Dati.Indirizzi
 
         private bool updating = false;
 
-        public frm_Indirizzi(Progetto progetto)
+        public Frm_Indirizzi(Progetto progetto)
         {
             InitializeComponent();
             this.progetto = progetto;

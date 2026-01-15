@@ -44,7 +44,7 @@ namespace GO_app
         {
             Progetto progetto = IO.CaricaProgetto(cmb_progetto.Text);
 
-            frm_Indirizzi indirizzi = new(progetto);
+            Frm_Indirizzi indirizzi = new(progetto);
 
             Hide();
 
@@ -56,7 +56,7 @@ namespace GO_app
             Show();
         }
 
-        private void btn_passage01B_Click(object sender, EventArgs e)
+        private void Btn_passage01B_Click(object sender, EventArgs e)
         {
             Progetto progetto = IO.CaricaProgetto(cmb_progetto.Text);
 

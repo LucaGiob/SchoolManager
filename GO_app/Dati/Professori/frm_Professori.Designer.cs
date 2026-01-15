@@ -47,7 +47,7 @@
             btn_aggiungi.TabIndex = 0;
             btn_aggiungi.Text = "Aggiungi";
             btn_aggiungi.UseVisualStyleBackColor = true;
-            btn_aggiungi.Click += btn_aggiungi_Click;
+            btn_aggiungi.Click += Btn_aggiungi_Click;
             // 
             // btn_prima
             // 
@@ -57,7 +57,7 @@
             btn_prima.TabIndex = 1;
             btn_prima.Text = "-";
             btn_prima.UseVisualStyleBackColor = true;
-            btn_prima.Click += btn_prima_Click;
+            btn_prima.Click += Btn_prima_Click;
             // 
             // lbl_ID
             // 
@@ -76,7 +76,7 @@
             btn_dopo.TabIndex = 3;
             btn_dopo.Text = "+";
             btn_dopo.UseVisualStyleBackColor = true;
-            btn_dopo.Click += btn_dopo_Click;
+            btn_dopo.Click += Btn_dopo_Click;
             // 
             // lbl_nome
             // 
@@ -102,7 +102,7 @@
             tbx_nome.Name = "tbx_nome";
             tbx_nome.Size = new Size(140, 27);
             tbx_nome.TabIndex = 6;
-            tbx_nome.TextChanged += tbx_nome_TextChanged;
+            tbx_nome.TextChanged += Tbx_nome_TextChanged;
             // 
             // tbx_oreExtra
             // 
@@ -110,7 +110,7 @@
             tbx_oreExtra.Name = "tbx_oreExtra";
             tbx_oreExtra.Size = new Size(140, 27);
             tbx_oreExtra.TabIndex = 7;
-            tbx_oreExtra.TextChanged += tbx_oreExtra_TextChanged;
+            tbx_oreExtra.TextChanged += Tbx_oreExtra_TextChanged;
             // 
             // btn_elimina
             // 
@@ -120,7 +120,7 @@
             btn_elimina.TabIndex = 8;
             btn_elimina.Text = "Elimina";
             btn_elimina.UseVisualStyleBackColor = true;
-            btn_elimina.Click += btn_elimina_Click;
+            btn_elimina.Click += Btn_elimina_Click;
             // 
             // frm_Professori
             // 

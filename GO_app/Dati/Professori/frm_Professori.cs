@@ -79,7 +79,7 @@ namespace GO_app.Dati.Professori
             IO.SalvaProgetto(progetto);
         }
 
-        private void btn_prima_Click(object sender, EventArgs e)
+        private void Btn_prima_Click(object sender, EventArgs e)
         {
             var oggetto = progetto.Professori.First(x => x.Id == actualID);
             actualID = progetto.Professori[progetto.Professori.IndexOf(oggetto) - 1].Id;
@@ -87,7 +87,7 @@ namespace GO_app.Dati.Professori
             Frm_Professori_Load(sender, e);
         }
 
-        private void btn_dopo_Click(object sender, EventArgs e)
+        private void Btn_dopo_Click(object sender, EventArgs e)
         {
             var oggetto = progetto.Professori.First(x => x.Id == actualID);
             actualID = progetto.Professori[progetto.Professori.IndexOf(oggetto) + 1].Id;
@@ -95,7 +95,7 @@ namespace GO_app.Dati.Professori
             Frm_Professori_Load(sender, e);
         }
 
-        private void btn_elimina_Click(object sender, EventArgs e)
+        private void Btn_elimina_Click(object sender, EventArgs e)
         {
             var oggetto = progetto.Professori.First(x => x.Id == actualID);
             progetto.Professori.Remove(oggetto);
@@ -105,7 +105,7 @@ namespace GO_app.Dati.Professori
             Frm_Professori_Load(sender, e);
         }
 
-        private void tbx_nome_TextChanged(object sender, EventArgs e)
+        private void Tbx_nome_TextChanged(object sender, EventArgs e)
         {
             if (updating) { return; }
 
@@ -113,7 +113,7 @@ namespace GO_app.Dati.Professori
             progetto.Professori[progetto.Professori.IndexOf(oggetto)].Nome = tbx_nome.Text;
         }
 
-        private void tbx_oreExtra_TextChanged(object sender, EventArgs e)
+        private void Tbx_oreExtra_TextChanged(object sender, EventArgs e)
         {
             if (updating) { return; }
 
@@ -123,7 +123,7 @@ namespace GO_app.Dati.Professori
             progetto.Professori[progetto.Professori.IndexOf(oggetto)].OreExtra = value;
         }
 
-        private void btn_aggiungi_Click(object sender, EventArgs e)
+        private void Btn_aggiungi_Click(object sender, EventArgs e)
         {
             Professore profe = new(progetto);
             progetto.Professori.Add(profe);

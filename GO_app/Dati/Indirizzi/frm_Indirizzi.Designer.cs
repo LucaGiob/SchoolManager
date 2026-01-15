@@ -1,6 +1,6 @@
 ﻿namespace GO_app.Dati.Indirizzi
 {
-    partial class frm_Indirizzi
+    partial class Frm_Indirizzi
     {
         /// <summary>
         /// Required designer variable.

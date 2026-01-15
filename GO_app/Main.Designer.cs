@@ -109,7 +109,7 @@
             btn_passage01B.TabIndex = 7;
             btn_passage01B.Text = "Professori";
             btn_passage01B.UseVisualStyleBackColor = true;
-            btn_passage01B.Click += btn_passage01B_Click;
+            btn_passage01B.Click += Btn_passage01B_Click;
             // 
             // Main
             // 
