@@ -35,7 +35,7 @@
             lbl_nome = new Label();
             lbl_extra = new Label();
             tbx_nome = new TextBox();
-            textBox2 = new TextBox();
+            tbx_oreExtra = new TextBox();
             btn_elimina = new Button();
             SuspendLayout();
             // 
@@ -100,12 +100,12 @@
             tbx_nome.Size = new Size(140, 27);
             tbx_nome.TabIndex = 6;
             // 
-            // textBox2
+            // tbx_oreExtra
             // 
-            textBox2.Location = new Point(320, 50);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(140, 27);
-            textBox2.TabIndex = 7;
+            tbx_oreExtra.Location = new Point(320, 50);
+            tbx_oreExtra.Name = "tbx_oreExtra";
+            tbx_oreExtra.Size = new Size(140, 27);
+            tbx_oreExtra.TabIndex = 7;
             // 
             // btn_elimina
             // 
@@ -122,7 +122,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(472, 93);
             Controls.Add(btn_elimina);
-            Controls.Add(textBox2);
+            Controls.Add(tbx_oreExtra);
             Controls.Add(tbx_nome);
             Controls.Add(lbl_extra);
             Controls.Add(lbl_nome);
@@ -132,6 +132,8 @@
             Controls.Add(btn_aggiungi);
             Name = "frm_Professori";
             Text = "frm_Professori";
+            Load += Frm_Professori_Load;
+            FormClosing += Frm_Professori_Closing;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -145,7 +147,7 @@
         private Label lbl_nome;
         private Label lbl_extra;
         private TextBox tbx_nome;
-        private TextBox textBox2;
+        private TextBox tbx_oreExtra;
         private Button btn_elimina;
     }
 }
