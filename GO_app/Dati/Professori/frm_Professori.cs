@@ -18,6 +18,8 @@ namespace GO_app.Dati.Professori
         {
             InitializeComponent();
             this.progetto = progetto;
+
+            this.Text = "Professori - " + progetto.Nome;
         }
     }
 }
