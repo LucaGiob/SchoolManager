@@ -11,13 +11,13 @@ using System.Windows.Forms;
 
 namespace GO_app.Dati.Professori
 {
-    public partial class Frm_Professori : Form
+    internal partial class Frm_Professori : Form
     {
-        public Progetto progetto;
-        public List<Professore> professori;
-        public List<string?> usedID;
+        internal Progetto progetto;
+        internal List<Professore> professori;
+        internal List<string?> usedID;
 
-        public Frm_Professori(Progetto progettoIn)
+        internal Frm_Professori(Progetto progettoIn)
         {
             InitializeComponent();
 

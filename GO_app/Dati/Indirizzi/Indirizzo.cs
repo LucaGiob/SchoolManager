@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace GO_app.Dati.Indirizzi
 {
-    public class Indirizzo
+    internal class Indirizzo
     {
-        public char Id { get; set; }
-        public string Nome { get; set; }
-        public List<Piano> Piani { get; set; } = [];
+        internal char Id { get; set; }
+        internal string Nome { get; set; }
+        internal List<Piano> Piani { get; set; } = [];
 
         // Costruttore, assegna ID progressivo basato sugli indirizzi già presenti
-        public Indirizzo(Progetto progetto)
+        internal Indirizzo(Progetto progetto)
         {
             Nome = string.Empty;
             Piani = [];
@@ -36,7 +36,7 @@ namespace GO_app.Dati.Indirizzi
         }
 
         // Costruttore vuoto (utile per deserializzazione)
-        public Indirizzo()
+        internal Indirizzo()
         {
             Nome = string.Empty;
             Piani = [];

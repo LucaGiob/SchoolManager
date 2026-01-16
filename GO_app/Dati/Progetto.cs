@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace GO_app.Dati
 {
-    public class Progetto
+    internal class Progetto
     {
-        public string Nome { get; set; } = "";
-        public List<Indirizzo> Indirizzi { get; set; } = [];
-        public List<Professore> Professori { get; set; } = [];
-        public List<Classe> Classi { get; set; } = [];
+        internal string Nome { get; set; } = "";
+        internal List<Indirizzo> Indirizzi { get; set; } = [];
+        internal List<Professore> Professori { get; set; } = [];
+        internal List<Classe> Classi { get; set; } = [];
 
-        public Progetto() { }
+        internal Progetto() { }
     }
 }

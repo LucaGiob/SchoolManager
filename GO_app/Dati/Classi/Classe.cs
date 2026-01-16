@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace GO_app.Dati.Classi
 {
-    public class Classe
+    internal class Classe
     {
-        public string Nome { get; set; }
-        public char Indirizzo { get; set; }
-        public int Anno { get; set; }
-        public List<string?> Professori { get; set; }
+        internal string Nome { get; set; }
+        internal char Indirizzo { get; set; }
+        internal int Anno { get; set; }
+        internal List<string?> Professori { get; set; }
 
-        public Classe()
+        internal Classe()
         {
             Nome = string.Empty;
             Indirizzo = '0';

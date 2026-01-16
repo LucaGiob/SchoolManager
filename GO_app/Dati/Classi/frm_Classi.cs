@@ -14,16 +14,16 @@ using System.Windows.Forms;
 
 namespace GO_app.Dati.Classi
 {
-    public partial class Frm_Classi : Form
+    internal partial class Frm_Classi : Form
     {
-        public Progetto progetto;
-        public List<Classe> listaClassi;
-        public Classe? classeOra;
+        internal Progetto progetto;
+        internal List<Classe> listaClassi;
+        internal Classe? classeOra;
 
         private bool updating = false;
         private bool firstLoad = true;
 
-        public Frm_Classi(Progetto progettoIn)
+        internal Frm_Classi(Progetto progettoIn)
         {
             InitializeComponent();
 

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace GO_app.Dati.Indirizzi
 {
-    public class Piano
+    internal class Piano
     {
-        public string Nome { get; set; } = "";
-        public int[] Anni { get; set; } = new int[5];
+        internal string Nome { get; set; } = "";
+        internal int[] Anni { get; set; } = new int[5];
 
-        public Piano() { }
+        internal Piano() { }
     }
 }

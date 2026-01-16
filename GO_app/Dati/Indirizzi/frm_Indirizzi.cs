@@ -11,17 +11,17 @@ using System.Windows.Forms;
 
 namespace GO_app.Dati.Indirizzi
 {
-    public partial class Frm_Indirizzi : Form
+    internal partial class Frm_Indirizzi : Form
     {
-        public Progetto progetto;
-        public char actualID;
-        public Indirizzo actualIndirizzo;
+        internal Progetto progetto;
+        internal char actualID;
+        internal Indirizzo actualIndirizzo;
 
-        private readonly List<Control> aggiunte;
+        internal readonly List<Control> aggiunte;
 
-        private bool updating = false;
+        internal bool updating = false;
 
-        public Frm_Indirizzi(Progetto progetto)
+        internal Frm_Indirizzi(Progetto progetto)
         {
             InitializeComponent();
             this.progetto = progetto;

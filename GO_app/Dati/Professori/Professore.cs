@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace GO_app.Dati.Professori
 {
-    public class Professore
+    internal class Professore
     {
-        public string? Id { get; set; }
-        public string? Nome { get; set; }
-        public int OreExtra { get; set; }
+        internal string? Id { get; set; }
+        internal string? Nome { get; set; }
+        internal int OreExtra { get; set; }
 
-        public Professore(List<string?> usedID)
+        internal Professore(List<string?> usedID)
         {
             Nome = string.Empty;
             OreExtra = 0;
@@ -35,7 +35,7 @@ namespace GO_app.Dati.Professori
             Id = id;
         }
 
-        public Professore()
+        internal Professore()
         {
             Id = "000";
             Nome = string.Empty;

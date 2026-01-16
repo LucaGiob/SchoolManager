@@ -9,7 +9,7 @@ namespace GO_app.Dati
 {
     internal class IO
     {
-        public static List<string?> ProgettiEsistenti()
+        internal static List<string?> ProgettiEsistenti()
         {
             string exeFolder = AppContext.BaseDirectory;
 
@@ -22,7 +22,7 @@ namespace GO_app.Dati
             return list;
         }
 
-        public static JsonSerializerOptions GetOptions()
+        internal static JsonSerializerOptions GetOptions()
         {
             return new JsonSerializerOptions
             {
@@ -30,7 +30,7 @@ namespace GO_app.Dati
             };
         }
 
-        public static void SalvaProgetto(Progetto progetto)
+        internal static void SalvaProgetto(Progetto progetto)
         {
             string folder = AppContext.BaseDirectory;
             string path = Path.Combine(folder, $"{progetto.Nome}.gop");
@@ -39,7 +39,7 @@ namespace GO_app.Dati
             File.WriteAllText(path, content);
         }
 
-        public static Progetto CaricaProgetto(string nome)
+        internal static Progetto CaricaProgetto(string nome)
         {
             string folder = AppContext.BaseDirectory;
             string path = Path.Combine(folder, $"{nome}.gop");

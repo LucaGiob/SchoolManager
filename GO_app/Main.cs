@@ -6,9 +6,9 @@ using GO_app.Dati.Classi;
 
 namespace GO_app
 {
-    public partial class Main : Form
+    internal partial class Main : Form
     {
-        public Main()
+        internal Main()
         {
             InitializeComponent();
         }
