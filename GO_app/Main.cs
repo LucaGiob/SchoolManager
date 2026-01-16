@@ -13,13 +13,17 @@ namespace GO_app
             InitializeComponent();
         }
 
-        private void Main_Load(object sender, EventArgs e)
+        private void Form_Load(object sender, EventArgs e)
         {
             List<string> progetti = [.. IO.ProgettiEsistenti()
                 .Where(x => x is not null)
                 .Select(x => x!)];
 
             cmb_progetto.DataSource = progetti;
+
+            btn_passage01A.Tag = (Func<Progetto, Form>)(p => new Frm_Indirizzi(p));
+            btn_passage01B.Tag = (Func<Progetto, Form>)(p => new Frm_Professori(p));
+            btn_passage01C.Tag = (Func<Progetto, Form>)(p => new Frm_Classi(p));
         }
 
         private void Btn_aggiungiProgetto_Click(object sender, EventArgs e)
@@ -38,55 +42,25 @@ namespace GO_app
 
             MessageBox.Show("File creato con successo!", "Operazione completata", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            Main_Load(sender, e);
+            Form_Load(sender, e);
         }
 
-        private void Btn_passage01A_Click(object sender, EventArgs e)
+        private void Btn_Passage_Click(object sender, EventArgs e)
         {
             Progetto progetto = IO.CaricaProgetto(cmb_progetto.Text);
 
-            Frm_Indirizzi indirizzi = new(progetto);
+            if (sender is not Button btn)
+                return;
 
-            Hide();
+            if (btn.Tag is not Func<Progetto, Form> creaForm)
+                return;
 
-            using (indirizzi)
+            using (Form frm = creaForm(progetto))
             {
-                indirizzi.ShowDialog();
+                Hide();
+                frm.ShowDialog();
+                Show();
             }
-
-            Show();
-        }
-
-        private void Btn_passage01B_Click(object sender, EventArgs e)
-        {
-            Progetto progetto = IO.CaricaProgetto(cmb_progetto.Text);
-
-            frm_Professori professori = new(progetto);
-
-            Hide();
-
-            using (professori)
-            {
-                professori.ShowDialog();
-            }
-
-            Show();
-        }
-
-        private void Btn_passage01C_Click(object sender, EventArgs e)
-        {
-            Progetto progetto = IO.CaricaProgetto(cmb_progetto.Text);
-
-            Frm_Classi classi = new(progetto);
-
-            Hide();
-
-            using (classi)
-            {
-                classi.ShowDialog();
-            }
-
-            Show();
         }
     }
 }

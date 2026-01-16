@@ -57,7 +57,7 @@
             btn_passage01A.TabIndex = 1;
             btn_passage01A.Text = "Indirizzi";
             btn_passage01A.UseVisualStyleBackColor = true;
-            btn_passage01A.Click += Btn_passage01A_Click;
+            btn_passage01A.Click += Btn_Passage_Click;
             // 
             // lbl_progetto
             // 
@@ -111,7 +111,7 @@
             btn_passage01B.TabIndex = 7;
             btn_passage01B.Text = "Professori";
             btn_passage01B.UseVisualStyleBackColor = true;
-            btn_passage01B.Click += Btn_passage01B_Click;
+            btn_passage01B.Click += Btn_Passage_Click;
             // 
             // btn_passage01C
             // 
@@ -121,7 +121,7 @@
             btn_passage01C.TabIndex = 9;
             btn_passage01C.Text = "Classi";
             btn_passage01C.UseVisualStyleBackColor = true;
-            btn_passage01C.Click += Btn_passage01C_Click;
+            btn_passage01C.Click += Btn_Passage_Click;
             // 
             // lbl_passage01C
             // 
@@ -150,7 +150,7 @@
             Name = "Main";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Gestione orario";
-            Load += Main_Load;
+            Load += Form_Load;
             ResumeLayout(false);
         }
 

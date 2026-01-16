@@ -2,7 +2,7 @@
 
 namespace GO_app.Dati.Professori
 {
-    partial class frm_Professori
+    partial class Frm_Professori
     {
         /// <summary>
         /// Required designer variable.
