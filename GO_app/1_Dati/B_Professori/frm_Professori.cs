@@ -14,123 +14,72 @@ namespace GO_app.Dati.Professori
     public partial class frm_Professori : Form
     {
         public Progetto progetto;
+        public List<Professore> professori;
+        public List<string?> usedID;
 
-        private string actualID;
-        private bool updating = false;
-
-        public frm_Professori(Progetto progetto)
+        public frm_Professori(Progetto progettoIn)
         {
             InitializeComponent();
-            this.progetto = progetto;
-            actualID = "000";
+
+            progetto = progettoIn;
+            professori = progetto.Professori;
+
+            usedID = [.. professori.Select(c => c.Id)];
 
             this.Text = "Professori - " + progetto.Nome;
         }
 
         private void Frm_Professori_Load(object sender, EventArgs e)
         {
-            updating = true;
+            var colID = new DataGridViewTextBoxColumn();
+            colID.HeaderText = "ID";
+            colID.Name = "ID";
+            colID.ReadOnly = true;
+            data.Columns.Add(colID);
 
-            btn_prima.Enabled = false;
-            btn_dopo.Enabled = false;
-            btn_elimina.Enabled = false;
+            var colNome = new DataGridViewTextBoxColumn();
+            colNome.HeaderText = "Nome";
+            colNome.Name = "Nome";
+            data.Columns.Add(colNome);
 
-            tbx_nome.Enabled = false;
-            tbx_oreExtra.Enabled = false;
+            var colOre = new DataGridViewTextBoxColumn();
+            colOre.HeaderText = "Ore Extra";
+            colOre.Name = "OreExtra";
+            colOre.ValueType = typeof(int);
+            data.Columns.Add(colOre);
 
-            if (progetto.Professori.Count == 0)
+            foreach (var p in professori)
             {
-                actualID = "000";
+                if (p.Id is null || p.Id == "") { continue; }
 
-                return;
+                data.Rows.Add(p.Id, p.Nome, p.OreExtra);
             }
-
-            if (progetto.Professori.Count > 0 && actualID == "000")
-            {
-                actualID = progetto.Professori[0].Id;
-            }
-
-            var oggetto = progetto.Professori.First(x => x.Id == actualID);
-
-            lbl_ID.Text = actualID;
-            tbx_nome.Text = oggetto.Nome;
-            tbx_oreExtra.Text = oggetto.OreExtra.ToString();
-
-            btn_elimina.Enabled = true;
-
-            tbx_nome.Enabled = true;
-            tbx_oreExtra.Enabled = true;
-
-            if (!(progetto.Professori.IndexOf(oggetto) == 0))
-            {
-                btn_prima.Enabled = true;
-            }
-
-            if (!(progetto.Professori.IndexOf(oggetto) == progetto.Professori.Count - 1))
-            {
-                btn_dopo.Enabled = true;
-            }
-
-            updating = false;
         }
 
         private void Frm_Professori_Closing(object sender, EventArgs e)
         {
+            professori.Clear();
+            foreach (DataGridViewRow row in data.Rows)
+            {
+                professori.Add(new Professore
+                {
+                    Id = row.Cells["Id"].Value?.ToString(),
+                    Nome = row.Cells["Nome"].Value?.ToString(),
+                    OreExtra = int.TryParse(row.Cells["OreExtra"].Value?.ToString(), out int ore) ? ore : 0
+                });
+            }
+
             IO.SalvaProgetto(progetto);
-        }
-
-        private void Btn_prima_Click(object sender, EventArgs e)
-        {
-            var oggetto = progetto.Professori.First(x => x.Id == actualID);
-            actualID = progetto.Professori[progetto.Professori.IndexOf(oggetto) - 1].Id;
-
-            Frm_Professori_Load(sender, e);
-        }
-
-        private void Btn_dopo_Click(object sender, EventArgs e)
-        {
-            var oggetto = progetto.Professori.First(x => x.Id == actualID);
-            actualID = progetto.Professori[progetto.Professori.IndexOf(oggetto) + 1].Id;
-
-            Frm_Professori_Load(sender, e);
-        }
-
-        private void Btn_elimina_Click(object sender, EventArgs e)
-        {
-            var oggetto = progetto.Professori.First(x => x.Id == actualID);
-            progetto.Professori.Remove(oggetto);
-
-            actualID = "000";
-
-            Frm_Professori_Load(sender, e);
-        }
-
-        private void Tbx_nome_TextChanged(object sender, EventArgs e)
-        {
-            if (updating) { return; }
-
-            var oggetto = progetto.Professori.First(x => x.Id == actualID);
-            progetto.Professori[progetto.Professori.IndexOf(oggetto)].Nome = tbx_nome.Text;
-        }
-
-        private void Tbx_oreExtra_TextChanged(object sender, EventArgs e)
-        {
-            if (updating) { return; }
-
-            int value = int.Parse(tbx_oreExtra.Text);
-
-            var oggetto = progetto.Professori.First(x => x.Id == actualID);
-            progetto.Professori[progetto.Professori.IndexOf(oggetto)].OreExtra = value;
         }
 
         private void Btn_aggiungi_Click(object sender, EventArgs e)
         {
-            Professore profe = new(progetto);
-            progetto.Professori.Add(profe);
+            Professore profe = new(usedID);
 
-            actualID = profe.Id;
+            string? nuovoId = profe.Id;
+            usedID.Add(nuovoId);
 
-            Frm_Professori_Load(sender, e);
+            data.Rows.Add(nuovoId, "", 0);
         }
     }
 }

@@ -28,132 +28,50 @@
         /// </summary>
         private void InitializeComponent()
         {
+            data = new DataGridView();
             btn_aggiungi = new Button();
-            btn_prima = new Button();
-            lbl_ID = new Label();
-            btn_dopo = new Button();
-            lbl_nome = new Label();
-            lbl_extra = new Label();
-            tbx_nome = new TextBox();
-            tbx_oreExtra = new TextBox();
-            btn_elimina = new Button();
+            ((System.ComponentModel.ISupportInitialize)data).BeginInit();
             SuspendLayout();
+            // 
+            // data
+            // 
+            data.AllowUserToAddRows = false;
+            data.AllowUserToResizeRows = false;
+            data.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            data.EditMode = DataGridViewEditMode.EditOnEnter;
+            data.Location = new Point(10, 50);
+            data.Name = "data";
+            data.RowHeadersWidth = 51;
+            data.Size = new Size(500, 500);
+            data.TabIndex = 9;
             // 
             // btn_aggiungi
             // 
             btn_aggiungi.Location = new Point(10, 10);
             btn_aggiungi.Name = "btn_aggiungi";
-            btn_aggiungi.Size = new Size(220, 30);
+            btn_aggiungi.Size = new Size(500, 30);
             btn_aggiungi.TabIndex = 0;
             btn_aggiungi.Text = "Aggiungi";
             btn_aggiungi.UseVisualStyleBackColor = true;
             btn_aggiungi.Click += Btn_aggiungi_Click;
             // 
-            // btn_prima
-            // 
-            btn_prima.Location = new Point(240, 10);
-            btn_prima.Name = "btn_prima";
-            btn_prima.Size = new Size(30, 30);
-            btn_prima.TabIndex = 1;
-            btn_prima.Text = "-";
-            btn_prima.UseVisualStyleBackColor = true;
-            btn_prima.Click += Btn_prima_Click;
-            // 
-            // lbl_ID
-            // 
-            lbl_ID.Location = new Point(280, 10);
-            lbl_ID.Name = "lbl_ID";
-            lbl_ID.Size = new Size(50, 30);
-            lbl_ID.TabIndex = 2;
-            lbl_ID.Text = "0";
-            lbl_ID.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // btn_dopo
-            // 
-            btn_dopo.Location = new Point(340, 10);
-            btn_dopo.Name = "btn_dopo";
-            btn_dopo.Size = new Size(30, 30);
-            btn_dopo.TabIndex = 3;
-            btn_dopo.Text = "+";
-            btn_dopo.UseVisualStyleBackColor = true;
-            btn_dopo.Click += Btn_dopo_Click;
-            // 
-            // lbl_nome
-            // 
-            lbl_nome.Location = new Point(10, 50);
-            lbl_nome.Name = "lbl_nome";
-            lbl_nome.Size = new Size(70, 30);
-            lbl_nome.TabIndex = 4;
-            lbl_nome.Text = "Nome";
-            lbl_nome.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // lbl_extra
-            // 
-            lbl_extra.Location = new Point(240, 50);
-            lbl_extra.Name = "lbl_extra";
-            lbl_extra.Size = new Size(70, 30);
-            lbl_extra.TabIndex = 5;
-            lbl_extra.Text = "Ore extra";
-            lbl_extra.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // tbx_nome
-            // 
-            tbx_nome.Location = new Point(90, 50);
-            tbx_nome.Name = "tbx_nome";
-            tbx_nome.Size = new Size(140, 27);
-            tbx_nome.TabIndex = 6;
-            tbx_nome.TextChanged += Tbx_nome_TextChanged;
-            // 
-            // tbx_oreExtra
-            // 
-            tbx_oreExtra.Location = new Point(320, 50);
-            tbx_oreExtra.Name = "tbx_oreExtra";
-            tbx_oreExtra.Size = new Size(140, 27);
-            tbx_oreExtra.TabIndex = 7;
-            tbx_oreExtra.TextChanged += Tbx_oreExtra_TextChanged;
-            // 
-            // btn_elimina
-            // 
-            btn_elimina.Location = new Point(380, 10);
-            btn_elimina.Name = "btn_elimina";
-            btn_elimina.Size = new Size(80, 30);
-            btn_elimina.TabIndex = 8;
-            btn_elimina.Text = "Elimina";
-            btn_elimina.UseVisualStyleBackColor = true;
-            btn_elimina.Click += Btn_elimina_Click;
-            // 
             // frm_Professori
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(472, 93);
-            Controls.Add(btn_elimina);
-            Controls.Add(tbx_oreExtra);
-            Controls.Add(tbx_nome);
-            Controls.Add(lbl_extra);
-            Controls.Add(lbl_nome);
-            Controls.Add(btn_dopo);
-            Controls.Add(lbl_ID);
-            Controls.Add(btn_prima);
+            ClientSize = new Size(522, 563);
+            Controls.Add(data);
             Controls.Add(btn_aggiungi);
             Name = "frm_Professori";
             Text = "frm_Professori";
             FormClosing += Frm_Professori_Closing;
             Load += Frm_Professori_Load;
+            ((System.ComponentModel.ISupportInitialize)data).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
+        private DataGridView data;
         private Button btn_aggiungi;
-        private Button btn_prima;
-        private Label lbl_ID;
-        private Button btn_dopo;
-        private Label lbl_nome;
-        private Label lbl_extra;
-        private TextBox tbx_nome;
-        private TextBox tbx_oreExtra;
-        private Button btn_elimina;
     }
 }
