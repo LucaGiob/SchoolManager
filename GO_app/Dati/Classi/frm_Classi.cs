@@ -1,4 +1,6 @@
 ﻿using GO_app.Dati;
+using GO_app.Dati.Indirizzi;
+using GO_app.Dati.Professori;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.Design.AxImporter;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GO_app.Dati.Classi
@@ -20,6 +23,7 @@ namespace GO_app.Dati.Classi
         public Classe? classeOra;
 
         private bool updating = false;
+        private bool firstLoad = true;
 
         public Frm_Classi(Progetto progettoIn)
         {
@@ -47,6 +51,7 @@ namespace GO_app.Dati.Classi
 
         private void Frm_Classi_Closing(object sender, EventArgs e)
         {
+            SaveData(sender, e);
             IO.SalvaProgetto(progetto);
         }
 
@@ -65,6 +70,7 @@ namespace GO_app.Dati.Classi
             {
                 HeaderText = "Professore",
                 Name = "Professore",
+                DisplayStyle = DataGridViewComboBoxDisplayStyle.ComboBox,
                 Width = data.Width - colMateria.Width - 75
             };
             data.Columns.Add(colProfessore);
@@ -79,8 +85,6 @@ namespace GO_app.Dati.Classi
             cmb_indirizzo.Enabled = !nothing;
             nud_anno.Enabled = !nothing;
             btn_elimina.Enabled = !nothing;
-
-            data.Enabled = false;
 
             if (classeOra != null)
             {
@@ -104,13 +108,55 @@ namespace GO_app.Dati.Classi
                     nud_anno.Value = 0;
                 }
 
-                if (classeOra.Indirizzo != '0' && classeOra.Anno != 0)
-                {
-                    data.Enabled = true;
-                }
+                Data_Update(sender, e);
             }
 
             updating = false;
+        }
+
+        private void Data_Update(object sender, EventArgs e)
+        {
+            data.Enabled = false;
+            data.Rows.Clear();
+
+            if (classeOra != null)
+            {
+                if (classeOra.Indirizzo != '0' && classeOra.Anno != 0)
+                {
+                    data.Enabled = true;
+
+                    List<string?> professori = [.. progetto.Professori.Select(p => p.Nome)];
+
+                    foreach (Piano p in progetto.Indirizzi.First(c => c.Id == classeOra.Indirizzo).Piani)
+                    {
+                        if (p.Anni[classeOra.Anno - 1] == 0) { continue; }
+
+                        int rowIndex = data.Rows.Add();
+
+                        // Valore della TextBox
+                        data.Rows[rowIndex].Cells["Materia"].Value = p.Nome;
+
+                        // ComboBox: assegni le opzioni
+                        var comboCell = (DataGridViewComboBoxCell)data.Rows[rowIndex].Cells["Professore"];
+
+                        comboCell.DataSource = professori;
+
+                        if (!(classeOra.Professori.Count > rowIndex))
+                        {
+                            comboCell.Value = null;
+                            continue;
+                        }
+
+                        if (classeOra.Professori[rowIndex] == null || classeOra.Professori[rowIndex] == string.Empty || classeOra.Professori[rowIndex] == "000")
+                        {
+                            comboCell.Value = null;
+                        } else
+                        {
+                            comboCell.Value = progetto.Professori.First(c => c.Id == classeOra.Professori[rowIndex]).Nome;
+                        }
+                    }
+                }
+            }
         }
 
         private void Btn_aggiungi_Click(object sender, EventArgs e)
@@ -126,16 +172,27 @@ namespace GO_app.Dati.Classi
 
         private void classi_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (updating) { return; }
+
             if (classi.SelectedItem != null)
             {
-                classeOra = listaClassi[classi.SelectedIndex];
-            }
+                if (!firstLoad)
+                {
+                    SaveData(sender, e);
+                }
 
-            Form_Update(sender, e);
+                firstLoad = false;
+
+                classeOra = listaClassi[classi.SelectedIndex];
+
+                Form_Update(sender, e);
+            }
         }
 
         private void txb_nome_TextChanged(object sender, EventArgs e)
         {
+            if (updating) { return; }
+
             if (classeOra != null)
             {
                 classeOra.Nome = txb_nome.Text;
@@ -151,6 +208,7 @@ namespace GO_app.Dati.Classi
             if (classeOra != null)
             {
                 classeOra.Indirizzo = progetto.Indirizzi[cmb_indirizzo.SelectedIndex].Id;
+                Data_Update(sender, e);
             }
         }
 
@@ -173,6 +231,30 @@ namespace GO_app.Dati.Classi
             if (classeOra != null)
             {
                 classeOra.Anno = (int)nud_anno.Value;
+                Data_Update(sender, e);
+            }
+        }
+
+        private void SaveData(object sender, EventArgs e)
+        {
+            List<string?> professori = [.. progetto.Professori.Select(p => p.Nome)];
+            List<string?> professoriID = [.. progetto.Professori.Select(p => p.Id)];
+
+            if (classeOra != null)
+            {
+                classeOra.Professori.Clear();
+
+                foreach (DataGridViewRow r in data.Rows)
+                {
+                    if (r.Cells["Professore"].Value == null || (string)r.Cells["Professore"].Value == string.Empty)
+                    {
+                        classeOra.Professori.Add("000");
+                    } else
+                    {
+                        string value = (string)r.Cells["Professore"].Value;
+                        classeOra.Professori.Add(professoriID[professori.IndexOf(value)]);
+                    }
+                }
             }
         }
     }

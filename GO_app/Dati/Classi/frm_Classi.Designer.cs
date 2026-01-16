@@ -53,10 +53,15 @@
             // 
             // data
             // 
+            data.AllowUserToAddRows = false;
+            data.AllowUserToDeleteRows = false;
+            data.AllowUserToResizeColumns = false;
+            data.AllowUserToResizeRows = false;
             data.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             data.Location = new Point(220, 50);
             data.Name = "data";
             data.RowHeadersWidth = 51;
+            data.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             data.Size = new Size(570, 364);
             data.TabIndex = 1;
             // 
