@@ -1,5 +1,6 @@
 ﻿using GO_app.Dati.Indirizzi;
 using GO_app.Dati.Professori;
+using GO_app._1_Dati.C_Classi;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace GO_app.Dati
         public string Nome { get; set; } = "";
         public List<Indirizzo> Indirizzi { get; set; } = [];
         public List<Professore> Professori { get; set; } = [];
+        public List<Classe> Classi { get; set; } = [];
 
         public Progetto() { }
     }

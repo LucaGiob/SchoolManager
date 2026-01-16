@@ -36,6 +36,8 @@
             btn_aggiungiProgetto = new Button();
             lbl_passage01B = new Label();
             btn_passage01B = new Button();
+            btn_passage01C = new Button();
+            lbl_passage01C = new Label();
             SuspendLayout();
             // 
             // lbl_passage01A
@@ -111,11 +113,32 @@
             btn_passage01B.UseVisualStyleBackColor = true;
             btn_passage01B.Click += Btn_passage01B_Click;
             // 
+            // btn_passage01C
+            // 
+            btn_passage01C.Location = new Point(70, 140);
+            btn_passage01C.Name = "btn_passage01C";
+            btn_passage01C.Size = new Size(240, 30);
+            btn_passage01C.TabIndex = 9;
+            btn_passage01C.Text = "Classi";
+            btn_passage01C.UseVisualStyleBackColor = true;
+            btn_passage01C.Click += Btn_passage01C_Click;
+            // 
+            // lbl_passage01C
+            // 
+            lbl_passage01C.Location = new Point(10, 140);
+            lbl_passage01C.Name = "lbl_passage01C";
+            lbl_passage01C.Size = new Size(50, 30);
+            lbl_passage01C.TabIndex = 8;
+            lbl_passage01C.Text = "1C";
+            lbl_passage01C.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(322, 153);
+            ClientSize = new Size(322, 183);
+            Controls.Add(btn_passage01C);
+            Controls.Add(lbl_passage01C);
             Controls.Add(btn_passage01B);
             Controls.Add(lbl_passage01B);
             Controls.Add(btn_aggiungiProgetto);
@@ -141,5 +164,7 @@
         private Button btn_aggiungiProgetto;
         private Label lbl_passage01B;
         private Button btn_passage01B;
+        private Button btn_passage01C;
+        private Label lbl_passage01C;
     }
 }
