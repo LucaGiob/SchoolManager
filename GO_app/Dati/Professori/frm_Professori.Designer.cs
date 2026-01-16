@@ -45,6 +45,7 @@ namespace GO_app.Dati.Professori
             data.Location = new Point(10, 50);
             data.Name = "data";
             data.RowHeadersWidth = 51;
+            data.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             data.Size = new Size(500, 500);
             data.TabIndex = 9;
             // 
@@ -58,14 +59,15 @@ namespace GO_app.Dati.Professori
             btn_aggiungi.UseVisualStyleBackColor = true;
             btn_aggiungi.Click += Btn_aggiungi_Click;
             // 
-            // frm_Professori
+            // Frm_Professori
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(522, 563);
             Controls.Add(data);
             Controls.Add(btn_aggiungi);
-            Name = "frm_Professori";
+            MinimumSize = new Size(400, 200);
+            Name = "Frm_Professori";
             Text = "frm_Professori";
             FormClosing += Form_Closing;
             Load += Form_Load;
