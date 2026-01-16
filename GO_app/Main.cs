@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using GO_app._1_Dati.C_Classi;
 using GO_app.Dati;
 using GO_app.Dati.Indirizzi;
 using GO_app.Dati.Professori;
+using GO_app.Dati.Classi;
 
 namespace GO_app
 {

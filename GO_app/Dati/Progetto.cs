@@ -1,6 +1,6 @@
 ﻿using GO_app.Dati.Indirizzi;
 using GO_app.Dati.Professori;
-using GO_app._1_Dati.C_Classi;
+using GO_app.Dati.Classi;
 using System;
 using System.Collections.Generic;
 using System.Linq;
