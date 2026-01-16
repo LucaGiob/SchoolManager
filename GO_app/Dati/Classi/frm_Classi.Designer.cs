@@ -154,6 +154,7 @@
             Controls.Add(data);
             Controls.Add(classi);
             Name = "Frm_Classi";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frm_Classi";
             FormClosing += Frm_Classi_Closing;
             Load += Frm_Classi_Load;

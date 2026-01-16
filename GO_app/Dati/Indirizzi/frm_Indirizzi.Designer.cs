@@ -224,7 +224,7 @@
             btn_aggiungiPiano.UseVisualStyleBackColor = true;
             btn_aggiungiPiano.Click += Btn_aggiungiPiano_Click;
             // 
-            // frm_Indirizzi
+            // Frm_Indirizzi
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -249,7 +249,8 @@
             Controls.Add(linea01);
             Controls.Add(btn_Elimina);
             Controls.Add(btn_Aggiungi);
-            Name = "frm_Indirizzi";
+            Name = "Frm_Indirizzi";
+            StartPosition = FormStartPosition.CenterScreen;
             FormClosing += Frm_Indirizzi_Closing;
             Load += Frm_Indirizzi_Load;
             ResumeLayout(false);

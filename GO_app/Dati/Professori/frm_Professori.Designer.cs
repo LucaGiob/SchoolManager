@@ -68,6 +68,7 @@ namespace GO_app.Dati.Professori
             Controls.Add(btn_aggiungi);
             MinimumSize = new Size(400, 200);
             Name = "Frm_Professori";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frm_Professori";
             FormClosing += Form_Closing;
             Load += Form_Load;
