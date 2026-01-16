@@ -36,7 +36,10 @@
             lbl_indirizzo = new Label();
             cmb_indirizzo = new ComboBox();
             btn_elimina = new Button();
+            lbl_anno = new Label();
+            nud_anno = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)data).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nud_anno).BeginInit();
             SuspendLayout();
             // 
             // classi
@@ -61,9 +64,9 @@
             // 
             btn_aggiungi.Location = new Point(10, 10);
             btn_aggiungi.Name = "btn_aggiungi";
-            btn_aggiungi.Size = new Size(200, 30);
+            btn_aggiungi.Size = new Size(95, 30);
             btn_aggiungi.TabIndex = 2;
-            btn_aggiungi.Text = "Aggiungi classe";
+            btn_aggiungi.Text = "Aggiungi";
             btn_aggiungi.UseVisualStyleBackColor = true;
             btn_aggiungi.Click += Btn_aggiungi_Click;
             // 
@@ -71,7 +74,7 @@
             // 
             txb_nome.Location = new Point(290, 11);
             txb_nome.Name = "txb_nome";
-            txb_nome.Size = new Size(125, 27);
+            txb_nome.Size = new Size(130, 27);
             txb_nome.TabIndex = 3;
             txb_nome.TextChanged += txb_nome_TextChanged;
             // 
@@ -99,25 +102,44 @@
             cmb_indirizzo.FormattingEnabled = true;
             cmb_indirizzo.Location = new Point(510, 11);
             cmb_indirizzo.Name = "cmb_indirizzo";
-            cmb_indirizzo.Size = new Size(160, 28);
+            cmb_indirizzo.Size = new Size(130, 28);
             cmb_indirizzo.TabIndex = 6;
             cmb_indirizzo.SelectedIndexChanged += cmb_indirizzo_SelectedIndexChanged;
             // 
             // btn_elimina
             // 
-            btn_elimina.Location = new Point(680, 10);
+            btn_elimina.Location = new Point(115, 10);
             btn_elimina.Name = "btn_elimina";
-            btn_elimina.Size = new Size(110, 30);
+            btn_elimina.Size = new Size(95, 30);
             btn_elimina.TabIndex = 7;
             btn_elimina.Text = "Elimina";
             btn_elimina.UseVisualStyleBackColor = true;
             btn_elimina.Click += btn_elimina_Click;
+            // 
+            // lbl_anno
+            // 
+            lbl_anno.Location = new Point(650, 10);
+            lbl_anno.Name = "lbl_anno";
+            lbl_anno.Size = new Size(70, 30);
+            lbl_anno.TabIndex = 8;
+            lbl_anno.Text = "Anno";
+            lbl_anno.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // nud_anno
+            // 
+            nud_anno.Location = new Point(730, 11);
+            nud_anno.Name = "nud_anno";
+            nud_anno.Size = new Size(60, 27);
+            nud_anno.TabIndex = 9;
+            nud_anno.ValueChanged += nud_anno_ValueChanged;
             // 
             // Frm_Classi
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 423);
+            Controls.Add(nud_anno);
+            Controls.Add(lbl_anno);
             Controls.Add(btn_elimina);
             Controls.Add(cmb_indirizzo);
             Controls.Add(lbl_indirizzo);
@@ -131,6 +153,7 @@
             FormClosing += Frm_Classi_Closing;
             Load += Frm_Classi_Load;
             ((System.ComponentModel.ISupportInitialize)data).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nud_anno).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -145,5 +168,7 @@
         private Label lbl_indirizzo;
         private ComboBox cmb_indirizzo;
         private Button btn_elimina;
+        private Label lbl_anno;
+        private NumericUpDown nud_anno;
     }
 }

@@ -42,11 +42,32 @@ namespace GO_app.Dati.Classi
             }
 
             Form_Update(sender, e);
+            Data_Initialize(sender, e);
         }
 
         private void Frm_Classi_Closing(object sender, EventArgs e)
         {
             IO.SalvaProgetto(progetto);
+        }
+
+        private void Data_Initialize(object sender, EventArgs e)
+        {
+            var colMateria = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Materia",
+                Name = "Materia",
+                ReadOnly = true,
+                Width = 150
+            };
+            data.Columns.Add(colMateria);
+
+            var colProfessore = new DataGridViewComboBoxColumn
+            {
+                HeaderText = "Professore",
+                Name = "Professore",
+                Width = data.Width - colMateria.Width - 75
+            };
+            data.Columns.Add(colProfessore);
         }
 
         private void Form_Update(object sender, EventArgs e)
@@ -56,7 +77,10 @@ namespace GO_app.Dati.Classi
             bool nothing = classeOra == null;
             txb_nome.Enabled = !nothing;
             cmb_indirizzo.Enabled = !nothing;
+            nud_anno.Enabled = !nothing;
             btn_elimina.Enabled = !nothing;
+
+            data.Enabled = false;
 
             if (classeOra != null)
             {
@@ -66,9 +90,23 @@ namespace GO_app.Dati.Classi
                 {
                     char IDindirizzo = classeOra.Indirizzo;
                     cmb_indirizzo.Text = progetto.Indirizzi.First(c => c.Id == IDindirizzo).Nome;
-                } else
+                }
+                else
                 {
                     cmb_indirizzo.SelectedIndex = -1;
+                }
+
+                if (classeOra.Anno != 0)
+                {
+                    nud_anno.Value = classeOra.Anno;
+                } else
+                {
+                    nud_anno.Value = 0;
+                }
+
+                if (classeOra.Indirizzo != '0' && classeOra.Anno != 0)
+                {
+                    data.Enabled = true;
                 }
             }
 
@@ -125,6 +163,16 @@ namespace GO_app.Dati.Classi
 
                 classeOra = null;
                 Form_Update(sender, e);
+            }
+        }
+
+        private void nud_anno_ValueChanged(object sender, EventArgs e)
+        {
+            if (updating) { return; }
+
+            if (classeOra != null)
+            {
+                classeOra.Anno = (int)nud_anno.Value;
             }
         }
     }

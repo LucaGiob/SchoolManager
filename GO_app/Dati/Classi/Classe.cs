@@ -10,6 +10,7 @@ namespace GO_app.Dati.Classi
     {
         public string Nome { get; set; }
         public char Indirizzo { get; set; }
+        public int Anno { get; set; }
         public List<string> Professori { get; set; }
 
         public Classe()
