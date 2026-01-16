@@ -1,4 +1,6 @@
-﻿namespace GO_app.Dati.Professori
+﻿using System.Windows.Forms;
+
+namespace GO_app.Dati.Professori
 {
     partial class frm_Professori
     {
@@ -36,6 +38,7 @@
             // data
             // 
             data.AllowUserToAddRows = false;
+            data.AllowUserToResizeColumns = false;
             data.AllowUserToResizeRows = false;
             data.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             data.EditMode = DataGridViewEditMode.EditOnEnter;
@@ -64,8 +67,9 @@
             Controls.Add(btn_aggiungi);
             Name = "frm_Professori";
             Text = "frm_Professori";
-            FormClosing += Frm_Professori_Closing;
-            Load += Frm_Professori_Load;
+            FormClosing += Form_Closing;
+            Load += Form_Load;
+            Resize += Form_Resize;
             ((System.ComponentModel.ISupportInitialize)data).EndInit();
             ResumeLayout(false);
         }

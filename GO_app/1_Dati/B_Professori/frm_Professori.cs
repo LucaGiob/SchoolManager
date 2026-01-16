@@ -29,23 +29,32 @@ namespace GO_app.Dati.Professori
             this.Text = "Professori - " + progetto.Nome;
         }
 
-        private void Frm_Professori_Load(object sender, EventArgs e)
+        private void Form_Load(object sender, EventArgs e)
         {
-            var colID = new DataGridViewTextBoxColumn();
-            colID.HeaderText = "ID";
-            colID.Name = "ID";
-            colID.ReadOnly = true;
+            var colID = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "ID",
+                Name = "ID",
+                ReadOnly = true,
+                Width = 60
+            };
             data.Columns.Add(colID);
 
-            var colNome = new DataGridViewTextBoxColumn();
-            colNome.HeaderText = "Nome";
-            colNome.Name = "Nome";
+            var colNome = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Nome",
+                Name = "Nome",
+                Width = data.Width - 75 - 60 - 100
+            };
             data.Columns.Add(colNome);
 
-            var colOre = new DataGridViewTextBoxColumn();
-            colOre.HeaderText = "Ore Extra";
-            colOre.Name = "OreExtra";
-            colOre.ValueType = typeof(int);
+            var colOre = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Ore Extra",
+                Name = "OreExtra",
+                ValueType = typeof(int),
+                Width = 100
+            };
             data.Columns.Add(colOre);
 
             foreach (var p in professori)
@@ -56,7 +65,18 @@ namespace GO_app.Dati.Professori
             }
         }
 
-        private void Frm_Professori_Closing(object sender, EventArgs e)
+        private void Form_Resize(object sender, EventArgs e)
+        {
+            //button
+            btn_aggiungi.Width = Width - 40;
+
+            //data
+            data.Width = Width - 40;
+            data.Height = Height - 110;
+            data.Columns["Nome"].Width = data.Width - 235;
+        }
+
+        private void Form_Closing(object sender, EventArgs e)
         {
             professori.Clear();
             foreach (DataGridViewRow row in data.Rows)
