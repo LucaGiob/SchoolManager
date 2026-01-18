@@ -1,4 +1,4 @@
-﻿namespace GO_app
+﻿namespace SM_app
 {
     partial class Main
     {

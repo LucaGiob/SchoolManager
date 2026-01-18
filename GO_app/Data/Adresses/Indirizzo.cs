@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GO_app.Dati.Indirizzi
+namespace SM_app.Data.Adresses
 {
     public class Indirizzo
     {

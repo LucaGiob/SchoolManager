@@ -1,13 +1,13 @@
-﻿using GO_app.Dati.Indirizzi;
-using GO_app.Dati.Professori;
-using GO_app.Dati.Classi;
+﻿using SM_app.Data.Adresses;
+using SM_app.Data.Teachers;
+using SM_app.Data.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GO_app.Dati
+namespace SM_app.Data
 {
     public class Progetto
     {

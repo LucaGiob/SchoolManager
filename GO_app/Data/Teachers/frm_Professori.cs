@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GO_app.Dati.Professori
+namespace SM_app.Data.Teachers
 {
     internal partial class Frm_Professori : Form
     {

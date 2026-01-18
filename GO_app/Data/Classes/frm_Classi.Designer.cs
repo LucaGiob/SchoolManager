@@ -1,4 +1,4 @@
-﻿namespace GO_app.Dati.Classi
+﻿namespace SM_app.Data.Classes
 {
     partial class Frm_Classi
     {

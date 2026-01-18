@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace GO_app.Dati
+namespace SM_app.Data
 {
     internal class IO
     {

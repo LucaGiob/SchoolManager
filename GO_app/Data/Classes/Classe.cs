@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GO_app.Dati.Classi
+namespace SM_app.Data.Classes
 {
     public class Classe
     {

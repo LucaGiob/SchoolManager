@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GO_app.Dati.Professori
+namespace SM_app.Data.Teachers
 {
     public class Professore
     {

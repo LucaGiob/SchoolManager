@@ -1,4 +1,4 @@
-﻿namespace GO_app.Dati.Indirizzi
+﻿namespace SM_app.Data.Adresses
 {
     partial class Frm_Indirizzi
     {

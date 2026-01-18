@@ -1,5 +1,5 @@
-﻿using GO_app.Dati.Classi;
-using GO_app.Dati.Professori;
+﻿using SM_app.Data.Classes;
+using SM_app.Data.Teachers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace GO_app.Dati.Indirizzi
+namespace SM_app.Data.Adresses
 {
     internal partial class Frm_Indirizzi : Form
     {

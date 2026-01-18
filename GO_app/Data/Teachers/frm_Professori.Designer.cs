@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace GO_app.Dati.Professori
+namespace SM_app.Data.Teachers
 {
     partial class Frm_Professori
     {

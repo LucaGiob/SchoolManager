@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using GO_app.Dati;
-using GO_app.Dati.Indirizzi;
-using GO_app.Dati.Professori;
-using GO_app.Dati.Classi;
+using SM_app.Data;
+using SM_app.Data.Adresses;
+using SM_app.Data.Teachers;
+using SM_app.Data.Classes;
 
-namespace GO_app
+namespace SM_app
 {
     internal partial class Main : Form
     {

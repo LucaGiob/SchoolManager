@@ -1,6 +1,6 @@
-﻿using GO_app.Dati;
-using GO_app.Dati.Indirizzi;
-using GO_app.Dati.Professori;
+﻿using SM_app.Data;
+using SM_app.Data.Adresses;
+using SM_app.Data.Teachers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GO_app.Dati.Classi
+namespace SM_app.Data.Classes
 {
     internal partial class Frm_Classi : Form
     {
