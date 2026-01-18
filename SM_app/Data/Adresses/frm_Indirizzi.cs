@@ -41,7 +41,6 @@ namespace SM_app.Data.Adresses
             {
                 HeaderText = "Materia",
                 Name = "Materia",
-                ReadOnly = true,
                 Width = 150
             };
             materie.Columns.Add(colMateria);
