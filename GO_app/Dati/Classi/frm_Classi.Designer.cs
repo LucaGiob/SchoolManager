@@ -133,7 +133,9 @@
             // nud_anno
             // 
             nud_anno.Location = new Point(730, 11);
+            nud_anno.Maximum = new decimal(new int[] { 5, 0, 0, 0 });
             nud_anno.Name = "nud_anno";
+            nud_anno.ReadOnly = true;
             nud_anno.Size = new Size(60, 27);
             nud_anno.TabIndex = 9;
             nud_anno.ValueChanged += nud_anno_ValueChanged;

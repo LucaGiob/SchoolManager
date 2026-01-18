@@ -228,7 +228,9 @@ namespace GO_app.Dati.Classi
 
             if (classeOra != null)
             {
-                classeOra.Anno = (int)nud_anno.Value;
+                int value = (int)nud_anno.Value;
+
+                classeOra.Anno = value;
                 Data_Update(sender, e);
             }
         }
