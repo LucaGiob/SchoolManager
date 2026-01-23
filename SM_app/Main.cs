@@ -3,51 +3,86 @@ using SM_app.Data;
 using SM_app.Data.Adresses;
 using SM_app.Data.Teachers;
 using SM_app.Data.Classes;
+using System.Data.Common;
 
 namespace SM_app
 {
     internal partial class Main : Form
     {
+        internal List<string> projects = [];
+
+        private bool updating = false;
+        private readonly string newProjectText = "Nuovo_progetto";
+
         internal Main()
         {
             InitializeComponent();
-        }
 
-        private void Form_Load(object sender, EventArgs e)
-        {
-            List<string> progetti = [.. IO.ProgettiEsistenti()
-                .Where(x => x is not null)
-                .Select(x => x!)];
-
-            cmb_progetto.DataSource = progetti;
+            projects = IO.ProgettiEsistenti();
 
             btn_passage01A.Tag = (Func<Progetto, Form>)(p => new Frm_Indirizzi(p));
             btn_passage01B.Tag = (Func<Progetto, Form>)(p => new Frm_Professori(p));
             btn_passage01C.Tag = (Func<Progetto, Form>)(p => new Frm_Classi(p));
         }
 
-        private void Btn_aggiungiProgetto_Click(object sender, EventArgs e)
+        private void Form_Load(object sender, EventArgs e)
         {
-            if (cmb_progetto.Items.Cast<string>().Contains(cmb_progetto.Text))
+            foreach (var p in projects)
             {
-                MessageBox.Show("File già esistente", "Scegli un nome diverso o selezionalo dalla lista", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                projectsList.Items.Add(p);
+            }
+
+            Form_Update(sender, e);
+        }
+
+        private void Form_Update(object sender, EventArgs e)
+        {
+            updating = true;
+
+            bool itemSelected = projectsList.SelectedItems.Count > 0;
+
+            nameBox.Enabled = itemSelected;
+            remove.Enabled = itemSelected;
+
+            if (sender is Button btn && btn.Name == "projectsAdd")
+            {
+                projectsList.Items.Add(newProjectText);
+                projectsList.SelectedItem = newProjectText;
+            }
+
+            if (sender is TextBox tb && tb.Name == "nameBox")
+            {
+                projectsList.Items[projectsList.SelectedIndex] = projects[projectsList.SelectedIndex];
+            }
+
+            nameBox.Text = projectsList.Text;
+
+            updating = false;
+        }
+
+        private void ProjectsAdd_Click(object sender, EventArgs e)
+        {
+            if (projects.Contains(newProjectText))
+            {
+                MessageBox.Show("Nuovo progetto già esistente", "Ripetizione", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             Progetto progetto = new()
             {
-                Nome = cmb_progetto.Text
+                Nome = newProjectText
             };
+
+            projects.Add(progetto.Nome);
+
             IO.SalvaProgetto(progetto);
 
-            MessageBox.Show("File creato con successo!", "Operazione completata", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            Form_Load(sender, e);
+            Form_Update(sender, e);
         }
 
         private void Btn_Passage_Click(object sender, EventArgs e)
         {
-            Progetto progetto = IO.CaricaProgetto(cmb_progetto.Text);
+            Progetto progetto = IO.CaricaProgetto(projectsList.Text);
 
             if (sender is not Button btn)
                 return;
@@ -61,6 +96,43 @@ namespace SM_app
                 frm.ShowDialog();
                 Show();
             }
+        }
+
+        private void projectsList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Form_Update(sender, e);
+        }
+
+        private void nameBox_TextChanged(object sender, EventArgs e)
+        {
+            if (updating) { return; }
+
+            string value = nameBox.Text;
+            string old = projects[projectsList.SelectedIndex];
+
+            if (old == value) { return; }
+
+            if (string.IsNullOrEmpty(value))
+            {
+                MessageBox.Show("Il nome del progetto deve esistere!", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                nameBox.Text = old;
+                return;
+            }
+
+            string allowed = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_#@?!|";
+            string newText = new([.. value.Where(c => allowed.Contains(c))]);
+
+            if (value != newText)
+            {
+                MessageBox.Show("Il nome del progetto non può contere caratteri speciali (ad eccezione di -, _, #, @, ?, !, |)!", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                nameBox.Text = old;
+                return;
+            }
+
+            IO.RinominaProgetto(old, value);
+            projects[projectsList.SelectedIndex] = value;
+
+            Form_Update(sender, e);
         }
     }
 }

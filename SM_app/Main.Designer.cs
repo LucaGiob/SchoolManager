@@ -30,19 +30,22 @@
         {
             lbl_passage01A = new Label();
             btn_passage01A = new Button();
-            lbl_progetto = new Label();
-            cmb_progetto = new ComboBox();
+            projectsLabel = new Label();
             linea01 = new Panel();
-            btn_aggiungiProgetto = new Button();
+            projectsAdd = new Button();
             lbl_passage01B = new Label();
             btn_passage01B = new Button();
             btn_passage01C = new Button();
             lbl_passage01C = new Label();
+            remove = new Button();
+            projectsList = new ListBox();
+            nameLabel = new Label();
+            nameBox = new TextBox();
             SuspendLayout();
             // 
             // lbl_passage01A
             // 
-            lbl_passage01A.Location = new Point(10, 60);
+            lbl_passage01A.Location = new Point(280, 81);
             lbl_passage01A.Name = "lbl_passage01A";
             lbl_passage01A.Size = new Size(50, 30);
             lbl_passage01A.TabIndex = 0;
@@ -51,7 +54,7 @@
             // 
             // btn_passage01A
             // 
-            btn_passage01A.Location = new Point(70, 60);
+            btn_passage01A.Location = new Point(340, 81);
             btn_passage01A.Name = "btn_passage01A";
             btn_passage01A.Size = new Size(240, 30);
             btn_passage01A.TabIndex = 1;
@@ -59,44 +62,36 @@
             btn_passage01A.UseVisualStyleBackColor = true;
             btn_passage01A.Click += Btn_Passage_Click;
             // 
-            // lbl_progetto
+            // projectsLabel
             // 
-            lbl_progetto.Location = new Point(8, 9);
-            lbl_progetto.Name = "lbl_progetto";
-            lbl_progetto.Size = new Size(70, 30);
-            lbl_progetto.TabIndex = 2;
-            lbl_progetto.Text = "Progetto";
-            lbl_progetto.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // cmb_progetto
-            // 
-            cmb_progetto.FormattingEnabled = true;
-            cmb_progetto.Location = new Point(90, 10);
-            cmb_progetto.Name = "cmb_progetto";
-            cmb_progetto.Size = new Size(180, 28);
-            cmb_progetto.TabIndex = 3;
+            projectsLabel.Location = new Point(10, 10);
+            projectsLabel.Name = "projectsLabel";
+            projectsLabel.Size = new Size(100, 30);
+            projectsLabel.TabIndex = 2;
+            projectsLabel.Text = "Progetti";
+            projectsLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // linea01
             // 
             linea01.BackColor = SystemColors.GrayText;
-            linea01.Location = new Point(0, 50);
+            linea01.Location = new Point(230, 0);
             linea01.Name = "linea01";
-            linea01.Size = new Size(330, 1);
-            linea01.TabIndex = 4;
+            linea01.Size = new Size(1, 410);
+            linea01.TabIndex = 11;
             // 
-            // btn_aggiungiProgetto
+            // projectsAdd
             // 
-            btn_aggiungiProgetto.Location = new Point(280, 10);
-            btn_aggiungiProgetto.Name = "btn_aggiungiProgetto";
-            btn_aggiungiProgetto.Size = new Size(30, 30);
-            btn_aggiungiProgetto.TabIndex = 5;
-            btn_aggiungiProgetto.Text = "+";
-            btn_aggiungiProgetto.UseVisualStyleBackColor = true;
-            btn_aggiungiProgetto.Click += Btn_aggiungiProgetto_Click;
+            projectsAdd.Location = new Point(120, 10);
+            projectsAdd.Name = "projectsAdd";
+            projectsAdd.Size = new Size(100, 30);
+            projectsAdd.TabIndex = 5;
+            projectsAdd.Text = "Aggiungi";
+            projectsAdd.UseVisualStyleBackColor = true;
+            projectsAdd.Click += ProjectsAdd_Click;
             // 
             // lbl_passage01B
             // 
-            lbl_passage01B.Location = new Point(10, 100);
+            lbl_passage01B.Location = new Point(280, 121);
             lbl_passage01B.Name = "lbl_passage01B";
             lbl_passage01B.Size = new Size(50, 30);
             lbl_passage01B.TabIndex = 6;
@@ -105,7 +100,7 @@
             // 
             // btn_passage01B
             // 
-            btn_passage01B.Location = new Point(70, 100);
+            btn_passage01B.Location = new Point(340, 121);
             btn_passage01B.Name = "btn_passage01B";
             btn_passage01B.Size = new Size(240, 30);
             btn_passage01B.TabIndex = 7;
@@ -115,7 +110,7 @@
             // 
             // btn_passage01C
             // 
-            btn_passage01C.Location = new Point(70, 140);
+            btn_passage01C.Location = new Point(340, 161);
             btn_passage01C.Name = "btn_passage01C";
             btn_passage01C.Size = new Size(240, 30);
             btn_passage01C.TabIndex = 9;
@@ -125,26 +120,64 @@
             // 
             // lbl_passage01C
             // 
-            lbl_passage01C.Location = new Point(10, 140);
+            lbl_passage01C.Location = new Point(280, 151);
             lbl_passage01C.Name = "lbl_passage01C";
             lbl_passage01C.Size = new Size(50, 30);
             lbl_passage01C.TabIndex = 8;
             lbl_passage01C.Text = "1C";
             lbl_passage01C.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // remove
+            // 
+            remove.Location = new Point(550, 10);
+            remove.Name = "remove";
+            remove.Size = new Size(100, 30);
+            remove.TabIndex = 10;
+            remove.Text = "Rimuovi";
+            remove.UseVisualStyleBackColor = true;
+            // 
+            // projectsList
+            // 
+            projectsList.FormattingEnabled = true;
+            projectsList.Location = new Point(10, 50);
+            projectsList.Name = "projectsList";
+            projectsList.Size = new Size(210, 344);
+            projectsList.TabIndex = 12;
+            projectsList.SelectedIndexChanged += projectsList_SelectedIndexChanged;
+            // 
+            // nameLabel
+            // 
+            nameLabel.Location = new Point(240, 10);
+            nameLabel.Name = "nameLabel";
+            nameLabel.Size = new Size(100, 30);
+            nameLabel.TabIndex = 13;
+            nameLabel.Text = "Nome";
+            nameLabel.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // nameBox
+            // 
+            nameBox.Location = new Point(350, 11);
+            nameBox.Name = "nameBox";
+            nameBox.Size = new Size(190, 27);
+            nameBox.TabIndex = 14;
+            nameBox.Leave += nameBox_TextChanged;
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(322, 183);
+            ClientSize = new Size(662, 403);
+            Controls.Add(nameBox);
+            Controls.Add(nameLabel);
+            Controls.Add(projectsList);
+            Controls.Add(remove);
             Controls.Add(btn_passage01C);
             Controls.Add(lbl_passage01C);
             Controls.Add(btn_passage01B);
             Controls.Add(lbl_passage01B);
-            Controls.Add(btn_aggiungiProgetto);
+            Controls.Add(projectsAdd);
             Controls.Add(linea01);
-            Controls.Add(cmb_progetto);
-            Controls.Add(lbl_progetto);
+            Controls.Add(projectsLabel);
             Controls.Add(btn_passage01A);
             Controls.Add(lbl_passage01A);
             Name = "Main";
@@ -152,19 +185,23 @@
             Text = "Gestione orario";
             Load += Form_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Label lbl_passage01A;
         private Button btn_passage01A;
-        private Label lbl_progetto;
-        private ComboBox cmb_progetto;
+        private Label projectsLabel;
         private Panel linea01;
-        private Button btn_aggiungiProgetto;
+        private Button projectsAdd;
         private Label lbl_passage01B;
         private Button btn_passage01B;
         private Button btn_passage01C;
         private Label lbl_passage01C;
+        private Button remove;
+        private ListBox projectsList;
+        private Label nameLabel;
+        private TextBox nameBox;
     }
 }
