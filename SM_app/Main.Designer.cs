@@ -41,6 +41,7 @@
             projectsList = new ListBox();
             nameLabel = new Label();
             nameBox = new TextBox();
+            blocks = new Button();
             SuspendLayout();
             // 
             // lbl_passage01A
@@ -164,11 +165,22 @@
             nameBox.TextChanged += nameBox_TextChanged;
             nameBox.Leave += NameBox_Leave;
             // 
+            // blocks
+            // 
+            blocks.Location = new Point(300, 170);
+            blocks.Name = "blocks";
+            blocks.Size = new Size(240, 30);
+            blocks.TabIndex = 15;
+            blocks.Text = "Genera blocchi";
+            blocks.UseVisualStyleBackColor = true;
+            blocks.Click += blocks_Click;
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(662, 403);
+            Controls.Add(blocks);
             Controls.Add(nameBox);
             Controls.Add(nameLabel);
             Controls.Add(projectsList);
@@ -205,5 +217,6 @@
         private ListBox projectsList;
         private Label nameLabel;
         private TextBox nameBox;
+        private Button blocks;
     }
 }

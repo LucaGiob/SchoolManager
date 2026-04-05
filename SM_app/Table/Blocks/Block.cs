@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace SM_app.Table.Blocks
 {
-    internal class Block
+    public class Block
     {
-        internal string Classe {  get; set; }
-        internal string Materia { get; set; }
-        internal string Professore { get; set; }
+        public string Classe {  get; set; }
+        public string Materia { get; set; }
+        public string? Professore { get; set; }
 
-        internal Block(string classe, string materia, string professore)
+        public Block(string classe, string materia, string? professore)
         {
             Classe = classe;
             Materia = materia;

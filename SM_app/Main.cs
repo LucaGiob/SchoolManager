@@ -3,6 +3,7 @@ using SM_app.Data;
 using SM_app.Data.Adresses;
 using SM_app.Data.Teachers;
 using SM_app.Data.Classes;
+using SM_app.Table.Blocks;
 using System.Data.Common;
 
 namespace SM_app
@@ -165,6 +166,47 @@ namespace SM_app
             IO.EliminaProgetto(name);
 
             updating = false;
+        }
+
+        private void Generate_Blocks(object sender, EventArgs e)
+        {
+            Progetto progetto = IO.CaricaProgetto(projectsList.Text);
+
+            if (sender is not Button btn)
+                return;
+
+            foreach (var c in progetto.Classi)
+            {
+                var indirizzo = progetto.Indirizzi.FirstOrDefault(x => x.Id == c.Indirizzo);
+                var anno = c.Anno;
+
+                int index = 0;
+
+                Dictionary<string, (int, string?)> materie = [];
+                foreach (var p in indirizzo.Piani)
+                {
+                    if (p.Anni[anno] == 0) { continue; }
+
+                    materie.Add(p.Nome, (p.Anni[anno], c.Professori[index]));
+                    index++;
+                }
+
+                foreach (var m in materie)
+                {
+                    for (int i = 0; i < m.Value.Item1; i++)
+                    {
+                        Block block = new(c.Nome, m.Key, m.Value.Item2);
+                        progetto.Blocks.Add(block);
+                    }
+                }
+            }
+
+            IO.SalvaProgetto(progetto);
+        }
+
+        private void blocks_Click(object sender, EventArgs e)
+        {
+            Generate_Blocks(sender, e);
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SM_app.Table.Blocks;
 
 namespace SM_app.Data
 {
@@ -15,6 +16,8 @@ namespace SM_app.Data
         public List<Indirizzo> Indirizzi { get; set; } = [];
         public List<Professore> Professori { get; set; } = [];
         public List<Classe> Classi { get; set; } = [];
+
+        public List<Block> Blocks { get; set; } = [];
 
         public Progetto() { }
     }
