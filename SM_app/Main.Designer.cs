@@ -42,6 +42,7 @@
             nameLabel = new Label();
             nameBox = new TextBox();
             blocks = new Button();
+            button1 = new Button();
             SuspendLayout();
             // 
             // lbl_passage01A
@@ -175,11 +176,22 @@
             blocks.UseVisualStyleBackColor = true;
             blocks.Click += blocks_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(300, 206);
+            button1.Name = "button1";
+            button1.Size = new Size(240, 30);
+            button1.TabIndex = 16;
+            button1.Text = "Genera classi";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(662, 403);
+            Controls.Add(button1);
             Controls.Add(blocks);
             Controls.Add(nameBox);
             Controls.Add(nameLabel);
@@ -218,5 +230,6 @@
         private Label nameLabel;
         private TextBox nameBox;
         private Button blocks;
+        private Button button1;
     }
 }

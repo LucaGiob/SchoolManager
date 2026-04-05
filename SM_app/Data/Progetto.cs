@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SM_app.Table.Blocks;
+using SM_app.Table.Class;
 
 namespace SM_app.Data
 {
@@ -18,6 +19,7 @@ namespace SM_app.Data
         public List<Classe> Classi { get; set; } = [];
 
         public List<Block> Blocks { get; set; } = [];
+        public List<ClassTable> ClassTables { get; set; } = [];
 
         public Progetto() { }
     }

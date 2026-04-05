@@ -5,6 +5,7 @@ using SM_app.Data.Teachers;
 using SM_app.Data.Classes;
 using SM_app.Table.Blocks;
 using System.Data.Common;
+using SM_app.Table.Class;
 
 namespace SM_app
 {
@@ -175,6 +176,8 @@ namespace SM_app
             if (sender is not Button btn)
                 return;
 
+            progetto.Blocks.Clear();
+
             foreach (var c in progetto.Classi)
             {
                 var indirizzo = progetto.Indirizzi.FirstOrDefault(x => x.Id == c.Indirizzo);
@@ -207,6 +210,30 @@ namespace SM_app
         private void blocks_Click(object sender, EventArgs e)
         {
             Generate_Blocks(sender, e);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Progetto progetto = IO.CaricaProgetto(projectsList.Text);
+
+            if (sender is not Button btn)
+                return;
+
+            progetto.ClassTables.Clear();
+
+            foreach (var c in progetto.Classi)
+            {
+                List<Block> classBlocks = [.. progetto.Blocks.Where(x => x.Classe == c.Nome)];
+
+                for (int i = 0; i < 36 - classBlocks.Count; i++)
+                {
+                    classBlocks.Add(new Block(c.Nome, "empty", ""));
+                }
+
+                //TO DO
+            }
+
+            IO.SalvaProgetto(progetto);
         }
     }
 }
