@@ -12,7 +12,7 @@ namespace SM_app
         internal List<string> projects = [];
 
         private bool updating = false;
-        private readonly string newProjectText = "Nuovo_progetto";
+        private readonly string newProjectText = "New project";
 
         internal Main()
         {
@@ -112,13 +112,6 @@ namespace SM_app
 
             if (old == value) { return; }
 
-            if (string.IsNullOrEmpty(value))
-            {
-                MessageBox.Show("Il nome del progetto deve esistere!", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                nameBox.Text = old;
-                return;
-            }
-
             string allowed = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_#@?!|";
             string newText = new([.. value.Where(c => allowed.Contains(c))]);
 
@@ -131,6 +124,27 @@ namespace SM_app
 
             IO.RinominaProgetto(old, value);
             projects[projectsList.SelectedIndex] = value;
+            projectsList.Items[projectsList.SelectedIndex] = projects[projectsList.SelectedIndex];
+
+            nameBox.Focus();
+            nameBox.SelectionStart = nameBox.Text.Length;
+        }
+
+        private void NameBox_Leave(object sender, EventArgs e)
+        {
+            if (updating) { return; }
+
+            string value = nameBox.Text;
+            string old = projects[projectsList.SelectedIndex];
+
+            if (old == value) { return; }
+
+            if (string.IsNullOrEmpty(value))
+            {
+                MessageBox.Show("Il nome del progetto deve esistere!", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                nameBox.Text = old;
+                return;
+            }
 
             Form_Update(sender, e);
         }

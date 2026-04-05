@@ -45,7 +45,7 @@
             // 
             // lbl_passage01A
             // 
-            lbl_passage01A.Location = new Point(280, 81);
+            lbl_passage01A.Location = new Point(240, 50);
             lbl_passage01A.Name = "lbl_passage01A";
             lbl_passage01A.Size = new Size(50, 30);
             lbl_passage01A.TabIndex = 0;
@@ -54,7 +54,7 @@
             // 
             // btn_passage01A
             // 
-            btn_passage01A.Location = new Point(340, 81);
+            btn_passage01A.Location = new Point(300, 50);
             btn_passage01A.Name = "btn_passage01A";
             btn_passage01A.Size = new Size(240, 30);
             btn_passage01A.TabIndex = 1;
@@ -91,7 +91,7 @@
             // 
             // lbl_passage01B
             // 
-            lbl_passage01B.Location = new Point(280, 121);
+            lbl_passage01B.Location = new Point(240, 90);
             lbl_passage01B.Name = "lbl_passage01B";
             lbl_passage01B.Size = new Size(50, 30);
             lbl_passage01B.TabIndex = 6;
@@ -100,7 +100,7 @@
             // 
             // btn_passage01B
             // 
-            btn_passage01B.Location = new Point(340, 121);
+            btn_passage01B.Location = new Point(300, 90);
             btn_passage01B.Name = "btn_passage01B";
             btn_passage01B.Size = new Size(240, 30);
             btn_passage01B.TabIndex = 7;
@@ -110,7 +110,7 @@
             // 
             // btn_passage01C
             // 
-            btn_passage01C.Location = new Point(340, 161);
+            btn_passage01C.Location = new Point(300, 130);
             btn_passage01C.Name = "btn_passage01C";
             btn_passage01C.Size = new Size(240, 30);
             btn_passage01C.TabIndex = 9;
@@ -120,7 +120,7 @@
             // 
             // lbl_passage01C
             // 
-            lbl_passage01C.Location = new Point(280, 151);
+            lbl_passage01C.Location = new Point(240, 130);
             lbl_passage01C.Name = "lbl_passage01C";
             lbl_passage01C.Size = new Size(50, 30);
             lbl_passage01C.TabIndex = 8;
@@ -160,7 +160,8 @@
             nameBox.Name = "nameBox";
             nameBox.Size = new Size(190, 27);
             nameBox.TabIndex = 14;
-            nameBox.Leave += nameBox_TextChanged;
+            nameBox.TextChanged += nameBox_TextChanged;
+            nameBox.Leave += NameBox_Leave;
             // 
             // Main
             // 
