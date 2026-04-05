@@ -80,5 +80,18 @@ namespace SM_app.Data
             File.Delete(vecchioPath);
         }
 
+        internal static void EliminaProgetto(string nome)
+        {
+            if (string.IsNullOrWhiteSpace(nome))
+                throw new ArgumentException("Il nome del progetto non può essere vuoto.", nameof(nome));
+
+            string folder = AppContext.BaseDirectory;
+            string path = Path.Combine(folder, $"{nome}.{extension}");
+
+            if (!File.Exists(path))
+                throw new FileNotFoundException("File progetto non trovato.", path);
+
+            File.Delete(path);
+        }
     }
 }

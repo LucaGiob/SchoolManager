@@ -135,6 +135,7 @@
             remove.TabIndex = 10;
             remove.Text = "Rimuovi";
             remove.UseVisualStyleBackColor = true;
+            remove.Click += remove_Click;
             // 
             // projectsList
             // 

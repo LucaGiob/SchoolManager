@@ -14,6 +14,8 @@ namespace SM_app
         private bool updating = false;
         private readonly string newProjectText = "New project";
 
+        private List<Control> controls = [];
+
         internal Main()
         {
             InitializeComponent();
@@ -23,6 +25,8 @@ namespace SM_app
             btn_passage01A.Tag = (Func<Progetto, Form>)(p => new Frm_Indirizzi(p));
             btn_passage01B.Tag = (Func<Progetto, Form>)(p => new Frm_Professori(p));
             btn_passage01C.Tag = (Func<Progetto, Form>)(p => new Frm_Classi(p));
+
+            controls.AddRange([nameBox, remove, btn_passage01A, btn_passage01B, btn_passage01C]);
         }
 
         private void Form_Load(object sender, EventArgs e)
@@ -41,8 +45,10 @@ namespace SM_app
 
             bool itemSelected = projectsList.SelectedItems.Count > 0;
 
-            nameBox.Enabled = itemSelected;
-            remove.Enabled = itemSelected;
+            foreach (var c in controls)
+            {
+                c.Enabled = itemSelected;
+            }
 
             if (sender is Button btn && btn.Name == "projectsAdd")
             {
@@ -147,6 +153,18 @@ namespace SM_app
             }
 
             Form_Update(sender, e);
+        }
+
+        private void remove_Click(object sender, EventArgs e)
+        {
+            updating = true;
+
+            string name = nameBox.Text;
+            projects.RemoveAt(projectsList.SelectedIndex);
+            projectsList.Items.RemoveAt(projectsList.SelectedIndex);
+            IO.EliminaProgetto(name);
+
+            updating = false;
         }
     }
 }
